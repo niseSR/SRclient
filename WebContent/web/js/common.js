@@ -1,3 +1,7 @@
+function getDomain(){
+	return "210.107.198.173:8080";
+}
+
 (function($){
     $(document).ready(function(){
 
@@ -337,6 +341,71 @@ $(document).ready(function() {
  * @author Andreas Waltl, netCU Internetagentur (http://www.netcu.de)
  */
 (function($){$.fn.touchwipe=function(settings){var config={min_move_x:20,min_move_y:20,wipeLeft:function(){},wipeRight:function(){},wipeUp:function(){},wipeDown:function(){},preventDefaultEvents:true};if(settings)$.extend(config,settings);this.each(function(){var startX;var startY;var isMoving=false;function cancelTouch(){this.removeEventListener('touchmove',onTouchMove);startX=null;isMoving=false}function onTouchMove(e){if(config.preventDefaultEvents){e.preventDefault()}if(isMoving){var x=e.touches[0].pageX;var y=e.touches[0].pageY;var dx=startX-x;var dy=startY-y;if(Math.abs(dx)>=config.min_move_x){cancelTouch();if(dx>0){config.wipeLeft()}else{config.wipeRight()}}else if(Math.abs(dy)>=config.min_move_y){cancelTouch();if(dy>0){config.wipeDown()}else{config.wipeUp()}}}}function onTouchStart(e){if(e.touches.length==1){startX=e.touches[0].pageX;startY=e.touches[0].pageY;isMoving=true;this.addEventListener('touchmove',onTouchMove,false)}}if('ontouchstart'in document.documentElement){this.addEventListener('touchstart',onTouchStart,false)}});return this}})(jQuery);
+
+// session 체크
+function check_session(){
+	var sessionId = sessionStorage.getItem("SRClient.id");
+	var sessionSeq = sessionStorage.getItem("SRClient.seq");
+	if(sessionId != null)
+		return "NM";	// Normal Member(NM)
+	else
+		return "RL"; 	// Required Login(RL)
+}
+
+(function($) {
+    $.fn.invisible = function() {
+        return this.each(function() {
+            $(this).css("display", "none");
+        });
+    };
+    $.fn.visible = function() {
+        return this.each(function() {
+            $(this).css("visibility", "visible");
+        });
+    };
+}(jQuery));
+
+function member_load(){
+	var tmp = check_session();
+	console.log(tmp);
+	$("#sessionId").text(sessionStorage.getItem("SRClient.id"));
+	$("#sessionName").text(sessionStorage.getItem("SRClient.name")+"님");
+	$("#sessionCompany").text(sessionStorage.getItem("SRClient.company"));
+}
+
+function logout(){
+	sessionStorage.removeItem("secure.id");
+	sessionStorage.removeItem("secure.seq");
+	sessionStorage.removeItem("secure.auth");
+	location.href="main.html";
+
+}
+
+function getUrlSeq(){
+	var url      = window.location.href; 
+	var tmpArr = url.split("?");
+	var tmp1Arr = tmpArr[1].split("=");
+	var seq = tmp1Arr[1];
+	
+	return seq;
+}
+
+function error_load(){
+	alert("잘못된 접근입니다");
+	sessionStorage.removeItem("secure.id");
+	sessionStorage.removeItem("secure.seq");
+	location.href = "../../main.html";
+}
+
+
+function implement_pbkdf2(msgdata){
+
+	var hashdgt = CryptoJS.SHA256(msgdata);
+
+	var key512Bits250Iterations = CryptoJS.PBKDF2(msgdata, hashdgt, { keySize: 512/32, iterations: 250 });
+	
+	return key512Bits250Iterations;
+}
 
 
 

@@ -26,7 +26,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body onload = "onloadMain()">
+<body>
 <!--Start Header-->
 <header id="header">
     
@@ -54,11 +54,11 @@
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="web/home.html">Home</a>
+                                <li><a href="./web/home.html">Home</a>
                                     
                                 </li>
 
-                                <li><a href="web/architectureInfo.html">Architecture Info</a>
+                                <li><a href="./web/architectureInfo.html">Architecture Info</a>
                                     
                                 </li>
 
@@ -88,30 +88,35 @@
 		<div class="row sub_content">
 			<div class="col-lg-12 col-md-12 col-sm-12 wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
 				<div align="center"><img src="images/logo2.png"></div>
-				<h1 class="intro text-center">Goal-oriented Knowledge Intensive</h1>
-				<h1 class="intro text-center">Security Requirement Engineering Web Application</h1>
+				
+				<h1 class="intro text-center">User Registration Page</h1>
+				
+				<h2 class="intro text-center">Warning : Please check the ID and Company Name</h2>
 			</div>
-			
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<div class="serviceBox_3">
-					<h3>Purpose : This Web Application is for understanding and recommending the security requirements and related concepts using Problem Domain Ontology.<p>
-						목적 : 이 홈페이지는 온톨로지를 활용하여 보안 요구사항과 관련되는 개념들을 이해하고, 추천하기 위한 Web Application 입니다.</h3>
-					<h3>Published by : Bong-Jae Kim, Seok-Won Lee, and Sung-Shin Choi</h3>
-				</div>
-			</div>
+
 			
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<br />
 				<div align="center">
 					<label for="id"> ID :  </label>
 					<input type="text" id="tbId" />
-				
+					<input type="button" value="ID check" onclick = "checkUniqueId()" id="btnId" />
 				<br />
 					<label for="password"> PW : </label>
-					<input type="password" name="password" id = "tbPassword"/>
+					<input type="password" name="password1" id="tbPassword1"/>
+				<br />
+					<label for="password"> Confirm PW : </label>
+					<input type="password" name="password2" id="tbPassword2"/>
+				<br />
+					<label for="name"> Name : </label>
+					<input type="text" id="tbUserName"/>
+				<br />
+					<label for="company"> Company : </label>
+					<input type="text" id="tbCompany"/>
+					<input type="button" value="Company check" onclick = "checkUniqueCompany()" id="btnCompany"/>
 				<br />	
-					<input type="button" value="Login" onclick="Login()"/>
-					<input onclick="moveToRegistration()" type="button" value="Registration"/>
+					<input type="button" value="Submit User Info" onclick = "submitUserInfo()"/>
+					<input type="button" value="Back to Home" onclick = "backToMain()"/>
 				</div>
 			</div>
 		</div>	
@@ -140,8 +145,9 @@
 <script type="text/javascript" src="js/pbkdf2.js"></script>
 <script type="text/javascript" src="js/sha256.js"></script>
 
-<script type="text/javascript" src="web/js/common.js"></script>     <!-- WARNING: 공통으로 들어가는 Javascript 파일 -->
-<script type="text/javascript" src="web/js/main.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
+<script type="text/javascript" src="web/js/common.js"></script>				<!-- WARNING: 공통으로 들어가는 Javascript 파일 -->
+<script type="text/javascript" src="web/js/userRegistration.js"></script> 	<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
+
 
 
 
