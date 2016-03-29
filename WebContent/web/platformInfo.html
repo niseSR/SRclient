@@ -51,7 +51,7 @@
 	<script type="text/javascript" src="../js/sha256.js"></script>
 	
 	<script type="text/javascript" src="js/common.js"></script>     <!-- WARNING: 공통으로 들어가는 Javascript 파일 -->
-	<script type="text/javascript" src="js/stakeholdersInfo.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
+	<script type="text/javascript" src="js/platformInfo.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
 
 </head>
 <body>
@@ -123,38 +123,39 @@
 	<br />
 	
 	<h2> Platform Information</h2>  
-	<label for="PlatformPart">Platform Part</label>
-	<input type="text" id="tbPlatformPart" />
+	<label for="PlatformPart">Platform Part(*) : </label>
+	<input type="text" onkeypress="toLower()" id="tbPlatformPart" style="ime-mode:disabled;" />
 	<br />
-	<label for="Platform Vendor">Platform Vendor</label>
+	<label for="Platform Vendor">Platform Vendor(*) : </label>
 	<input type="text" id="tbPlatformVendor" />
 	<br />
-	<label for="Platform Product">Platform Product</label>
+	<label for="Platform Product">Platform Product(*) : </label>
 	<input type="text" id="tbPlatformProduct" />
 	<br />
-	<label for="Platform Version">Platform Version</label>
-	<input type="text" id="tbPlatformVersion" />
+	<label for="Platform Version">Platform Version :</label>
+	<input type="text" id="tbPlatformVersion" value="*"/>
 	<br />
-	<label for="Platform Update">Platform Update </label>
-	<input type="text" id="PlatformUpdate" />
+	<label for="Platform Update">Platform Update :</label>
+	<input type="text" id="tbPlatformUpdate" value="*"/>
 	<br />
-	<label for="Platform Edition">Platform Edition</label>
-	<input type="text" id="PlatformUpdate" />
+	<label for="Platform Edition">Platform Edition :</label>
+	<input type="text" id="tbPlatformEdition" value="*"/>
 	<br />
-	<label for="Platform Edition">Platform Language</label>
-	<input type="text" id="PlatformLanguage" />
+	<label for="Platform Language">Platform Language :</label>
+	<input type="text" id="tbPlatformLanguage" value="*"/>
 	<br />
-	<label for="Platform Edition">Software Edition</label>
-	<input type="text" id="PlatformUpdate" />
+	<label for="Software Edition">Software Edition : </label>
+	<input type="text" id="tbsoftwareEdition" value="*"/>
 	<br />
-	<label for="Platform Edition">Target Software</label>
-	<input type="text" id="PlatformUpdate" />
+	<label for="Target Software">Target Software : </label>
+	<input type="text" id="tbTargetSoftware" value="*"/>
 	<br />
-	<label for="Platform Edition">Target Hardware</label>
-	<input type="text" id="PlatformUpdate" />
+	<label for="Target Hardware">Target Hardware : </label>
+	<input type="text" id="tbTargetHardware" value="*"/>
 	<br />
-	<label for="Platform Edition">other</label>
-	<input type="text" id="PlatformUpdate" />
+	<label for="Platform Other">other : </label>
+	<textarea rows="5" cols="30" name="contents" id="taOther" >*</textarea>
+	
 	<br />
 	<br />
 	<input type="button" value="Submit" onclick = "submitPlatformInfo()"/>

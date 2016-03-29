@@ -158,6 +158,7 @@
 				<th>Monitoring</th>
 				<th>Prevention</th>
 				<th>Recovery</th>
+				<th>Calculating!</th>
 				<th>Required Security Goal</th>
 			</tr>
 		</thead>
@@ -179,6 +180,7 @@
 					<option value="2">Required</option>
 					<option value="3">Critical</option>
 				</select></td>
+				<td><input type="button" value="Calculating Confidentiality Goal" onclick = "calculatingCSgoal()"/></td>
 				<td id="ConfidentialitySecurityGoal">데이터5</td>
 			</tr>
 			<tr>
@@ -198,6 +200,7 @@
 					<option value="2">Required</option>
 					<option value="3">Critical</option>
 				</select></td>
+				<td><input type="button" value="Calculating Integrity Goal" onclick = "calculatingISgoal()"/></td>
 				<td id="IntegritySecurityGoal">데이터5</td>
 			</tr>
 			<tr>
@@ -217,6 +220,7 @@
 					<option value="2">Required</option>
 					<option value="3">Critical</option>
 				</select></td>
+				<td><input type="button" value="Calculating Availability Goal" onclick = "calculatingASgoal()"/></td>
 				<td id="AvailabilitySecurityGoal">데이터5</td>
 			</tr>
 		</tbody>
@@ -227,18 +231,34 @@
 		<thead>
 			<tr>
 				<th>#</th>
+				<th>Part</th>
 				<th>Vendor</th>
-				<th>Software</th>
+				<th>Product</th>
 				<th>Version</th>
+				<th>Update</th>
+				<th>Edition</th>
+				<th>Language</th>
+				<th>Software Edition</th>
+				<th>Target Software</th>
+				<th>Target Hardware</th>
+				<th>Other</th>
 				<th>Platform ID</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td>1</td>
-				<td><input type="text" id="VendorName" /></td>
-				<td><input type="text" id="SoftwareName" /></td>
-				<td><input type="text" id="Version" /></td>
+				<td><input type="text" id="tbPLPart" /></td>
+				<td><input type="text" id="tbPLVendor" /></td>
+				<td><input type="text" id="tbPLProduct" /></td>
+				<td><input type="text" id="tbPLVersion" /></td>
+				<td><input type="text" id="tbPLUpdate" /></td>
+				<td><input type="text" id="tbPLEdition" /></td>
+				<td><input type="text" id="tbPLLanguage" /></td>
+				<td><input type="text" id="tbPLSoftwareEdition" /></td>
+				<td><input type="text" id="tbPLTargetSoftware" /></td>
+				<td><input type="text" id="tbPLTargetHardware" /></td>
+				<td><input type="text" id="tbPLOther" /></td>
 				<td id="platformID"><input type="button" value="platformID" onclick = "showPlatformID()"/></td>
 			</tr>
 		</tbody>
