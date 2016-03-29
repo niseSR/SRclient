@@ -2,7 +2,7 @@
     <wb-module deploy-name="secure_client">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="secure_client"/>
         <property name="java-output-path" value="/secure_client/build/classes"/>
+        <property name="context-root" value="SRclient"/>
     </wb-module>
 </project-modules>
