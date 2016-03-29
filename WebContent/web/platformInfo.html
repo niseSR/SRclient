@@ -51,10 +51,10 @@
 	<script type="text/javascript" src="../js/sha256.js"></script>
 	
 	<script type="text/javascript" src="js/common.js"></script>     <!-- WARNING: 공통으로 들어가는 Javascript 파일 -->
-	<script type="text/javascript" src="js/architectureInfo.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
+	<script type="text/javascript" src="js/stakeholdersInfo.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
 
 </head>
-<body onload="onloadHome()">
+<body>
 
 	<!--Start Header-->
 	<header id="header">
@@ -70,13 +70,6 @@
 							</h1>
 						</div>
 					</div>
-					
-<!--여기 수정 반드시 필요 / 수정한 이후 main.html 및 userRegistration 을 제외하고 모든 페이지에 적용-->            
-                <div class="nav navbar-nav">
-                	<li>ID : </li><li id="sessionId"></li>
-                  	<li>Company : </li><li id="sessionCompany"></li>
-                  	<li>Name : </li><li id="sessionName"></li>
-                </div>
 
 					<div class="col-md-9 col-sm-9">
 						<!-- Navigation
@@ -116,9 +109,8 @@
 	</header>
 	<!--End Header-->
 <body>
-
 	<h1>
-		Architecture Info ><select id="ArchitectureInfo">
+		Architecture Info > <select id="ArchitectureInfo">
 			<option value="0">-- Select --</option>
 			<option value="1">Stakeholders Info</option>
 			<option value="2">Platform Info</option>
@@ -127,59 +119,45 @@
 		</select>
 		<input type="button" value="Go!" onclick = "moveToAIPage()"/>
 	</h1>
-	</h1>
+
+	<br />
 	
-
+	<h2> Platform Information</h2>  
+	<label for="PlatformPart">Platform Part</label>
+	<input type="text" id="tbPlatformPart" />
 	<br />
-
-	<label for="AssetName">Asset Name</label>
-	<input type="text" id="AssetName" />
-	<label for="AssetType">Asset Type</label>
-	<input type="text" id="AsseType" />
-	<label for="AssetSeverity">Asset Severity</label>
-	<input type="text" id="AssetSeverity" />
+	<label for="Platform Vendor">Platform Vendor</label>
+	<input type="text" id="tbPlatformVendor" />
+	<br />
+	<label for="Platform Product">Platform Product</label>
+	<input type="text" id="tbPlatformProduct" />
+	<br />
+	<label for="Platform Version">Platform Version</label>
+	<input type="text" id="tbPlatformVersion" />
+	<br />
+	<label for="Platform Update">Platform Update </label>
+	<input type="text" id="PlatformUpdate" />
+	<br />
+	<label for="Platform Edition">Platform Edition</label>
+	<input type="text" id="PlatformUpdate" />
+	<br />
+	<label for="Platform Edition">Platform Language</label>
+	<input type="text" id="PlatformLanguage" />
+	<br />
+	<label for="Platform Edition">Software Edition</label>
+	<input type="text" id="PlatformUpdate" />
+	<br />
+	<label for="Platform Edition">Target Software</label>
+	<input type="text" id="PlatformUpdate" />
+	<br />
+	<label for="Platform Edition">Target Hardware</label>
+	<input type="text" id="PlatformUpdate" />
+	<br />
+	<label for="Platform Edition">other</label>
+	<input type="text" id="PlatformUpdate" />
 	<br />
 	<br />
-
-	<table class="table table-striped table-bordered table-hover">
-		<caption>Req. Security Goal</caption>
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Monitoring</th>
-				<th>Prevention</th>
-				<th>Recovery</th>
-				<th>Required Security Goal</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Confidentiality</td>
-				<td>데이터2</td>
-				<td>데이터3</td>
-				<td>데이터4</td>
-				<td>데이터5</td>
-			</tr>
-			<tr>
-				<td>Integrity</td>
-				<td>데이터2</td>
-				<td>데이터3</td>
-				<td>데이터4</td>
-				<td>데이터5</td>
-			</tr>
-			<tr>
-				<td>Availability</td>
-				<td>데이터2</td>
-				<td>데이터3</td>
-				<td>데이터4</td>
-				<td>데이터5</td>
-			</tr>
-
-		</tbody>
-	</table>
-
-	<label for="PlatformInfo">Platform Info</label>
-	<
-
+	<input type="button" value="Submit" onclick = "submitPlatformInfo()"/>
+	<input type="button" value="Back To Home" onclick = "backToHome()"/>
 </body>
 </html>

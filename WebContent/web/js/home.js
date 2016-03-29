@@ -5,12 +5,6 @@ function moveToRegistration()
 	location.href="./userRegistration.html"
 }
 
-function onloadHome()
-{
-	if (check_session()=="RL") 	location.href="../main.html";
-	member_load();	
-	
-}
 
 function Login()
 {

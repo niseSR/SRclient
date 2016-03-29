@@ -54,7 +54,7 @@
 	<script type="text/javascript" src="js/architectureInfo.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
 
 </head>
-<body onload="onloadHome()">
+<body>
 
 	<!--Start Header-->
 	<header id="header">
@@ -70,13 +70,6 @@
 							</h1>
 						</div>
 					</div>
-					
-<!--여기 수정 반드시 필요 / 수정한 이후 main.html 및 userRegistration 을 제외하고 모든 페이지에 적용-->            
-                <div class="nav navbar-nav">
-                	<li>ID : </li><li id="sessionId"></li>
-                  	<li>Company : </li><li id="sessionCompany"></li>
-                  	<li>Name : </li><li id="sessionName"></li>
-                </div>
 
 					<div class="col-md-9 col-sm-9">
 						<!-- Navigation
@@ -116,9 +109,8 @@
 	</header>
 	<!--End Header-->
 <body>
-
 	<h1>
-		Architecture Info ><select id="ArchitectureInfo">
+		Architecture Info > <select id="ArchitectureInfo">
 			<option value="0">-- Select --</option>
 			<option value="1">Stakeholders Info</option>
 			<option value="2">Platform Info</option>
@@ -127,22 +119,39 @@
 		</select>
 		<input type="button" value="Go!" onclick = "moveToAIPage()"/>
 	</h1>
-	</h1>
-	
 
 	<br />
+	
+	<h2> Asset Information</h2>  
 
 	<label for="AssetName">Asset Name</label>
 	<input type="text" id="AssetName" />
 	<label for="AssetType">Asset Type</label>
-	<input type="text" id="AsseType" />
-	<label for="AssetSeverity">Asset Severity</label>
-	<input type="text" id="AssetSeverity" />
+	<select id="AssetType1">
+		<option value="0">-- Select --</option>
+		<option value="1">(DA)Data</option>
+		<option value="2">(DU)Documents</option>
+		<option value="3">(SW)Software</option>
+		<option value="4">(SV)Server</option>
+		<option value="5">(WS)Work Station</option>
+		<option value="6">(NW)Network</option>
+		<option value="7">(FC)Facility</option>
+		<option value="8">(SU)Support Service</option>
+		<option value="9">(PE)Personnel</option>
+		<option value="10">(ME)Media</option>
+	</select>
+	<input type="button" value="Select" onclick = "selectSubAssetType()"/>
+	<select id="AssetType2">
+				
+	</select>
+	<br />
+	<label for="AssetDescription">Asset Description</label>
+	<textarea rows="5" cols="30" name="contents"></textarea>
 	<br />
 	<br />
 
 	<table class="table table-striped table-bordered table-hover">
-		<caption>Req. Security Goal</caption>
+		<label for="RequiredSecurityGoal">Required Security Goal</label>
 		<thead>
 			<tr>
 				<th>#</th>
@@ -155,31 +164,94 @@
 		<tbody>
 			<tr>
 				<td>Confidentiality</td>
-				<td>데이터2</td>
-				<td>데이터3</td>
-				<td>데이터4</td>
-				<td>데이터5</td>
+				<td><select id="monitoringConfidentiality">
+					<option value="1">Not Required</option>
+					<option value="2">Required</option>
+					<option value="3">Critical</option>
+				</select></td>
+				<td><select id="preventingConfidentiality">
+					<option value="1">Not Required</option>
+					<option value="2">Required</option>
+					<option value="3">Critical</option>
+				</select></td>
+				<td><select id="RecoveryConfidentiality">
+					<option value="1">Not Required</option>
+					<option value="2">Required</option>
+					<option value="3">Critical</option>
+				</select></td>
+				<td id="ConfidentialitySecurityGoal">데이터5</td>
 			</tr>
 			<tr>
 				<td>Integrity</td>
-				<td>데이터2</td>
-				<td>데이터3</td>
-				<td>데이터4</td>
-				<td>데이터5</td>
+				<td><select id="monitoringIntegrity">
+					<option value="1">Not Required</option>
+					<option value="2">Required</option>
+					<option value="3">Critical</option>
+				</select></td>
+				<td><select id="preventingIntegrity">
+					<option value="1">Not Required</option>
+					<option value="2">Required</option>
+					<option value="3">Critical</option>
+				</select></td>
+				<td><select id="RecoveryIntegrity">
+					<option value="1">Not Required</option>
+					<option value="2">Required</option>
+					<option value="3">Critical</option>
+				</select></td>
+				<td id="IntegritySecurityGoal">데이터5</td>
 			</tr>
 			<tr>
 				<td>Availability</td>
-				<td>데이터2</td>
-				<td>데이터3</td>
-				<td>데이터4</td>
-				<td>데이터5</td>
+				<td><select id="monitoringAvailability">
+					<option value="1">Not Required</option>
+					<option value="2">Required</option>
+					<option value="3">Critical</option>
+				</select></td>
+				<td><select id="preventingAvailability">
+					<option value="1">Not Required</option>
+					<option value="2">Required</option>
+					<option value="3">Critical</option>
+				</select></td>
+				<td><select id="RecoveryAvailability">
+					<option value="1">Not Required</option>
+					<option value="2">Required</option>
+					<option value="3">Critical</option>
+				</select></td>
+				<td id="AvailabilitySecurityGoal">데이터5</td>
 			</tr>
-
 		</tbody>
 	</table>
-
 	<label for="PlatformInfo">Platform Info</label>
-	<
-
+	</br>
+	<table class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Vendor</th>
+				<th>Software</th>
+				<th>Version</th>
+				<th>Platform ID</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td><input type="text" id="VendorName" /></td>
+				<td><input type="text" id="SoftwareName" /></td>
+				<td><input type="text" id="Version" /></td>
+				<td id="platformID"><input type="button" value="platformID" onclick = "showPlatformID()"/></td>
+			</tr>
+		</tbody>
+	</table>
+	<input type="button" value="Addrow" onclick = "addRow()"/>
+	</br>
+	</br>
+	<label for="RelatedStakeholdersInfo">Related Stakeholders Info</label>
+	
+	<div id="RelatedSTakeholdersInfo">
+	</div>
+	
+	<input type="button" value="submit" onclick = "submitAssetInfo()"/>
+	<input type="button" value="Back To Home" onclick = "backToHome()"/>
 </body>
 </html>

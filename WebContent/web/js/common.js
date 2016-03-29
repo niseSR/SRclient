@@ -365,6 +365,13 @@ function check_session(){
     };
 }(jQuery));
 
+function onloadHome()
+{
+	if (check_session()=="RL") 	location.href="../main.html";
+	member_load();	
+	
+}
+
 function member_load(){
 	var tmp = check_session();
 	console.log(tmp);
@@ -406,6 +413,38 @@ function implement_pbkdf2(msgdata){
 	
 	return key512Bits250Iterations;
 }
+
+function backToMain(){
+	location.href="./main.html"
+}
+
+function backToHome(){
+	location.href="./home.html"
+}
+
+function moveToAIPage(){
+
+	var pageIndex = $("#ArchitectureInfo option:selected").val();
+	
+	switch (pageIndex) {
+		case "1": 
+			location.href="stakeholdersInfo.html";
+			break;
+		case "2": 
+			location.href="platformInfo.html";
+			break;
+		case "3":
+			location.href="assetInfo.html";
+			break;
+		case "4":
+			location.href="currentCountermeasure.html";
+			break;
+		default:
+			alert("Wrong Input Value \n 잘못된 입력입니다.");
+	}
+	
+}
+
 
 
 

@@ -5,10 +5,6 @@ var validCompanyCheck = 0;
 var reg_pwd = /^.*(?=.{8,16})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
 
-function backToMain(){
-	location.href="./main.html"
-}
-
 // 동일한 ID 체크
 function checkUniqueId()
 {
