@@ -51,7 +51,7 @@
 	<script type="text/javascript" src="../js/sha256.js"></script>
 	
 	<script type="text/javascript" src="js/common.js"></script>     <!-- WARNING: 공통으로 들어가는 Javascript 파일 -->
-	<script type="text/javascript" src="js/architectureInfo.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
+	<script type="text/javascript" src="js/assetInfo.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
 
 </head>
 <body>
@@ -108,7 +108,7 @@
 		<!--/#logo-bar -->
 	</header>
 	<!--End Header-->
-<body>
+<body onload = "loadAssetInfoPage()">
 	<h1>
 		Architecture Info > <select id="ArchitectureInfo">
 			<option value="0">-- Select --</option>
@@ -125,28 +125,38 @@
 	<h2> Asset Information</h2>  
 
 	<label for="AssetName">Asset Name</label>
-	<input type="text" id="AssetName" />
+	<input type="text" id="tbAssetName" />
 	<label for="AssetType">Asset Type</label>
 	<select id="AssetType1">
 		<option value="0">-- Select --</option>
-		<option value="1">(DA)Data</option>
-		<option value="2">(DU)Documents</option>
-		<option value="3">(SW)Software</option>
-		<option value="4">(SV)Server</option>
-		<option value="5">(WS)Work Station</option>
-		<option value="6">(NW)Network</option>
-		<option value="7">(FC)Facility</option>
-		<option value="8">(SU)Support Service</option>
-		<option value="9">(PE)Personnel</option>
-		<option value="10">(ME)Media</option>
+		<option value="AS_DA">(DA)Data</option>
+		<option value="AS_DU">(DU)Documents</option>
+		<option value="AS_SW">(SW)Software</option>
+		<option value="AS_SW">(SV)Server</option>
+		<option value="AS_WS">(WS)Work Station</option>
+		<option value="AS_NW">(NW)Network</option>
+		<option value="AS_FC">(FC)Facility</option>
+		<option value="AS_SU">(SU)Support Service</option>
+		<option value="AS_PE">(PE)Personnel</option>
+		<option value="AS_ME">(ME)Media</option>
 	</select>
 	<input type="button" value="Select" onclick = "selectSubAssetType()"/>
 	<select id="AssetType2">
 				
 	</select>
 	<br />
+	<label for="AssetCriticality">Asset Criticality</label>
+	<select id="AssetCriticality">
+		<option value="0">-- Select --</option>
+		<option value="H">High</option>
+		<option value="M">Medium</option>
+		<option value="L">Low</option>
+		
+	</select>
+	<br />
+	
 	<label for="AssetDescription">Asset Description</label>
-	<textarea rows="5" cols="30" name="contents"></textarea>
+	<textarea rows="5" cols="30" name="contents" id="taAssetDescription"></textarea>
 	<br />
 	<br />
 
@@ -166,62 +176,62 @@
 			<tr>
 				<td>Confidentiality</td>
 				<td><select id="monitoringConfidentiality">
-					<option value="1">Not Required</option>
-					<option value="2">Required</option>
-					<option value="3">Critical</option>
+					<option value="N">Not Required</option>
+					<option value="R">Required</option>
+					<option value="C">Critical</option>
 				</select></td>
 				<td><select id="preventingConfidentiality">
-					<option value="1">Not Required</option>
-					<option value="2">Required</option>
-					<option value="3">Critical</option>
+					<option value="N">Not Required</option>
+					<option value="R">Required</option>
+					<option value="C">Critical</option>
 				</select></td>
 				<td><select id="RecoveryConfidentiality">
-					<option value="1">Not Required</option>
-					<option value="2">Required</option>
-					<option value="3">Critical</option>
+					<option value="N">Not Required</option>
+					<option value="R">Required</option>
+					<option value="C">Critical</option>
 				</select></td>
-				<td><input type="button" value="Calculating Confidentiality Goal" onclick = "calculatingCSgoal()"/></td>
-				<td id="ConfidentialitySecurityGoal">데이터5</td>
+				<td><input type="button" value="Calculating Goal" onclick = "calculatingCSgoal()"/></td>
+				<td id="ConfidentialitySecurityGoal"></td>
 			</tr>
 			<tr>
 				<td>Integrity</td>
 				<td><select id="monitoringIntegrity">
-					<option value="1">Not Required</option>
-					<option value="2">Required</option>
-					<option value="3">Critical</option>
+					<option value="N">Not Required</option>
+					<option value="R">Required</option>
+					<option value="C">Critical</option>
 				</select></td>
 				<td><select id="preventingIntegrity">
-					<option value="1">Not Required</option>
-					<option value="2">Required</option>
-					<option value="3">Critical</option>
+					<option value="N">Not Required</option>
+					<option value="R">Required</option>
+					<option value="C">Critical</option>
 				</select></td>
 				<td><select id="RecoveryIntegrity">
-					<option value="1">Not Required</option>
-					<option value="2">Required</option>
-					<option value="3">Critical</option>
+					<option value="N">Not Required</option>
+					<option value="R">Required</option>
+					<option value="C">Critical</option>
 				</select></td>
-				<td><input type="button" value="Calculating Integrity Goal" onclick = "calculatingISgoal()"/></td>
-				<td id="IntegritySecurityGoal">데이터5</td>
+				<td><input type="button" value="Calculating Goal" onclick = "calculatingISgoal()"/></td>
+				<td id="IntegritySecurityGoal"></td>
 			</tr>
 			<tr>
 				<td>Availability</td>
 				<td><select id="monitoringAvailability">
-					<option value="1">Not Required</option>
-					<option value="2">Required</option>
-					<option value="3">Critical</option>
+					<option value="N">Not Required</option>
+					<option value="R">Required</option>
+					<option value="C">Critical</option>
 				</select></td>
 				<td><select id="preventingAvailability">
-					<option value="1">Not Required</option>
-					<option value="2">Required</option>
-					<option value="3">Critical</option>
+					<option value="N">Not Required</option>
+					<option value="R">Required</option>
+					<option value="C">Critical</option>
 				</select></td>
 				<td><select id="RecoveryAvailability">
-					<option value="1">Not Required</option>
-					<option value="2">Required</option>
-					<option value="3">Critical</option>
+					<option value="N">Not Required</option>
+					<option value="R">Required</option>
+					<option value="C">Critical</option>
 				</select></td>
-				<td><input type="button" value="Calculating Availability Goal" onclick = "calculatingASgoal()"/></td>
-				<td id="AvailabilitySecurityGoal">데이터5</td>
+				<td><input type="button" value="Calculating Goal" onclick = "calculatingASgoal()"/></td>
+				<td id="AvailabilitySecurityGoal"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -231,9 +241,9 @@
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Part</th>
-				<th>Vendor</th>
-				<th>Product</th>
+				<th>Part(*)</th>
+				<th>Vendor(*)</th>
+				<th>Product(*)</th>
 				<th>Version</th>
 				<th>Update</th>
 				<th>Edition</th>
@@ -245,21 +255,21 @@
 				<th>Platform ID</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id = "platformTable">
 			<tr>
 				<td>1</td>
-				<td><input type="text" id="tbPLPart" /></td>
-				<td><input type="text" id="tbPLVendor" /></td>
-				<td><input type="text" id="tbPLProduct" /></td>
-				<td><input type="text" id="tbPLVersion" /></td>
-				<td><input type="text" id="tbPLUpdate" /></td>
-				<td><input type="text" id="tbPLEdition" /></td>
-				<td><input type="text" id="tbPLLanguage" /></td>
-				<td><input type="text" id="tbPLSoftwareEdition" /></td>
-				<td><input type="text" id="tbPLTargetSoftware" /></td>
-				<td><input type="text" id="tbPLTargetHardware" /></td>
-				<td><input type="text" id="tbPLOther" /></td>
-				<td id="platformID"><input type="button" value="platformID" onclick = "showPlatformID()"/></td>
+				<td><input type="text" id="tbPlatformPart1" /></td>
+				<td><input type="text" id="tbPlatformVendor1" /></td>
+				<td><input type="text" id="tbPlatformProduct1" /></td>
+				<td><input type="text" id="tbPlatformVersion1" value = "*"/></td>
+				<td><input type="text" id="tbPlatformUpdate1" value = "*"/></td>
+				<td><input type="text" id="tbPlatformEdition1" value = "*"/></td>
+				<td><input type="text" id="tbPlatformLanguage1" value = "*"/></td>
+				<td><input type="text" id="tbsoftwareEdition1" value = "*"/></td>
+				<td><input type="text" id="tbTargetSoftware1" value = "*"/></td>
+				<td><input type="text" id="tbTargetHardware1" value = "*"/></td>
+				<td><input type="text" id="taOther1" value = "*"/></td>
+				<td id="platformID1"><input type="button" value="platformID" id = "btshowplatform1" onclick = "showPlatformID(1)"/></td>
 			</tr>
 		</tbody>
 	</table>
@@ -269,7 +279,10 @@
 	<label for="RelatedStakeholdersInfo">Related Stakeholders Info</label>
 	
 	<div id="RelatedSTakeholdersInfo">
+	
 	</div>
+	</br>
+	</br>
 	
 	<input type="button" value="submit" onclick = "submitAssetInfo()"/>
 	<input type="button" value="Back To Home" onclick = "backToHome()"/>
