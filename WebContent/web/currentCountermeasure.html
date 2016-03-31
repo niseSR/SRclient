@@ -51,7 +51,7 @@
 	<script type="text/javascript" src="../js/sha256.js"></script>
 	
 	<script type="text/javascript" src="js/common.js"></script>     <!-- WARNING: 공통으로 들어가는 Javascript 파일 -->
-	<script type="text/javascript" src="js/currentCountermeasureInfo.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
+	<script type="text/javascript" src="js/currentCountermeasure.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
 
 </head>
 <body>
@@ -127,21 +127,19 @@
 	<label for="AssetType">Asset Type</label>
 	<select id="AssetType1">
 		<option value="0">-- Select --</option>
-		<option value="1">(DA)Data</option>
-		<option value="2">(DU)Documents</option>
-		<option value="3">(SW)Software</option>
-		<option value="4">(SV)Server</option>
-		<option value="5">(WS)Work Station</option>
-		<option value="6">(NW)Network</option>
-		<option value="7">(FC)Facility</option>
-		<option value="8">(SU)Support Service</option>
-		<option value="9">(PE)Personnel</option>
-		<option value="10">(ME)Media</option>
+		<option value="DA">(DA)Data</option>
+		<option value="DU">(DU)Documents</option>
+		<option value="SW">(SW)Software</option>
+		<option value="SV">(SV)Server</option>
+		<option value="WS">(WS)Work Station</option>
+		<option value="NW">(NW)Network</option>
+		<option value="FC">(FC)Facility</option>
+		<option value="SU">(SU)Support Service</option>
+		<option value="PE">(PE)Personnel</option>
+		<option value="ME">(ME)Media</option>
 	</select>
 	<input type="button" value="FindAssetType" onclick = "findAssetType()"/>
-	<select id="AssetType2">
-				
-	</select>
+	<select id="AssetType2"></select>
 	<br />  
 	<label for="PlatformID">Countermeasure ID</label>
 	<select id="CountermeasureType1">
@@ -156,24 +154,19 @@
 		<option value="PA">(PA)Preventing Availability</option>
 		<option value="RA">(RA)Recovery Availability</option>
 	</select>
-	<input type="button" value="FindCountermeasureType" onclick = "findCountermeasureTyep()"/>
-	<select id="CountermeasureType2">
-				
-	</select>
+	<input type="button" value="Find Countermeasure Type" onclick = "findCountermeasureType()"/>
+	<select id="CountermeasureType2"></select>
 	<br />
-	<label for="Countermeasure Stakeholders">Countermeasure Stakeholders</label>
-	<select id="RelatedStakeholders">
-				
-	</select>
-	<br />
+	
 	<label for="Platform Name">Implemented Countermeasure</label>
+	<input type="button" value="Find Implementable Countermeasure" onclick = "findImplementableCM()"/>
 	<select id="ImplCountermeasure">
 				
 	</select>
 	
 	<br />
 	<br />
-	<input type="button" value="Submit" onclick = "submitCountermeasureInfo()"/>
+	<input type="button" value="Submit" onclick = "submitCurrentCMInfo()"/>
 	<input type="button" value="Back To Home" onclick = "backToHome()"/>
 </body>
 </html>
