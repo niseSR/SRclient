@@ -1,0 +1,1 @@
+var domainText = getDomain();
