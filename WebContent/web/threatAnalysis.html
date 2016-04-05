@@ -147,9 +147,18 @@
 	<input type="button" value="Find Threat" id = "btFindThreat" onclick = "findThreat()"/>
 	<br />
 	<br />
-	<label for="Threat Name">Threat New Name </label>
-	<input type="text"  id = "tbThreaNewtName"/>
-
+	<label for="Threat Name">New Threat Name (☆):</label>
+	<input type="text"  id = "tbThreatNewName"/>
+	<br />
+	<label for="Threat Name">New Threat ID :</label>
+	<input type="text"  id = "tbThreatNewID" readonly="readonly"/>
+	<br />
+	<label for="Threat Name">Threat Description:</label>
+	<br />
+	<textarea rows="5" cols="30" name="contents" id="taThreatDescription"></textarea>
+	<br />
+	<label for="Threat Platform">Threat Platform (☆) :</label>
+	<input type="button" value="Addrow" onclick = "addRow()"/>
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>
@@ -188,68 +197,97 @@
 	</table>
 	
 	
-	<div style="border:1px solid; padding:60px;">
-		<label for="AssetType">Related Asset Type</label>
-		<select id="AssetType1">
-			<option value="0">-- Select --</option>
-			<option value="AS_DA">(DA)Data</option>
-			<option value="AS_DU">(DU)Documents</option>
-			<option value="AS_SW">(SW)Software</option>
-			<option value="AS_SW">(SV)Server</option>
-			<option value="AS_WS">(WS)Work Station</option>
-			<option value="AS_NW">(NW)Network</option>
-			<option value="AS_FC">(FC)Facility</option>
-			<option value="AS_SU">(SU)Support Service</option>
-			<option value="AS_PE">(PE)Personnel</option>
-			<option value="AS_ME">(ME)Media</option>
-		</select>
-		<input type="button" value="Select" onclick = "selectSubAssetType()"/>
-		<select id="AssetType2">
-		</select>
-		<br />
-
-		<label for="MaliciousGoal">Malicious Goal :  </label>
-		<br />
-			<input type="checkbox" id="checkMGoalExposure" />Exposure 
-			<input type="checkbox" id="checkMGoalModification" />Modification
-			<input type="checkbox" id="checkMGoalDestroy" />Destroy
-		<br />
-		<br />
-		<label for="Malicious Activity Description">Malicious Activity Description</label>
-		<textarea rows="5" cols="30" name="contents" id="taMActivityDescription"></textarea>
-		<br />
-		<br />
-		<label for="Malicious Concept">Set the Malicious Concepts</label>
-			<br />
-			<br />
-			<input type="checkbox" id="CAPECcheck" />CAPEC 
-			<input type="text" id="CAPEC" />
-			<input type="button" value="Check CAPEC" onclick = "checkCAPEC()"/>
-			<br />
-			<br />
-			
-			<input type="checkbox" id="CUEcheck" />CVE 
-			<input type="text" id="CVE" />
-			<input type="button" value="Check CVE" onclick = "checkCVE()"/>
-			
-			<br />
-			<br />
-			<input type="checkbox" id="CWEcheck" />CWE 
-			<input type="text" id="CWE" />
-			<input type="button" value="Check CWE" onclick = "checkCWE()"/>
-
-	</div>
-	
-	<input type="button" value="Save and Add" />
-	<input type="button" value="clear" />
-	
+	<br />
+	<input type="button" value="Submit whole Data" onclick="submitThreatInfo()" />
 	<br />
 	<br />
 	
+	<div id = "threatActivityForm" style="display:none">
+		<label for="Threat Platform">Threat Activity (☆) :</label>
+		<div style="border:1px solid; padding:60px;">
+			<label for="AssetType">Related Asset Type (*) : </label>
+			<select id="AssetType1" >
+				<option value="0">-- Select --</option>
+				<option value="AS_DA">(DA)Data</option>
+				<option value="AS_DU">(DU)Documents</option>
+				<option value="AS_SW">(SW)Software</option>
+				<option value="AS_SW">(SV)Server</option>
+				<option value="AS_WS">(WS)Work Station</option>
+				<option value="AS_NW">(NW)Network</option>
+				<option value="AS_FC">(FC)Facility</option>
+				<option value="AS_SU">(SU)Support Service</option>
+				<option value="AS_PE">(PE)Personnel</option>
+				<option value="AS_ME">(ME)Media</option>
+			</select>
+			<input type="button" value="Select" onclick = "selectSubAssetType()"/>
+			<select id="AssetType2">
+			</select>
+			<br />
 	
-	<input type="button" value="Submit whole Data" />
-	<input type="button" value="Next" onclick="goToNextStep()" />
+			<label for="MaliciousGoal">Malicious Goal (*) :  </label>
+			<br />
+				<input type="checkbox" name = "cbMGoal" id="checkMGoalExposure" value ="E"/>Exposure 
+				<input type="checkbox" name = "cbMGoal" id="checkMGoalModification" value ="M"/>Modification
+				<input type="checkbox" name = "cbMGoal" id="checkMGoalDestroy" value ="D"/>Destroy
+			<br />
+			<br />
+			<label for="Malicious Activity Description">Malicious Activity Description</label>
+			<textarea rows="5" cols="30" name="contents" id="taMActivityDescription"></textarea>
+			<br />
+			<br />
+			<label for="Malicious Concept">Set the Malicious Concepts</label>
+				<br />
+				<br />
+				CAPEC -<input type="text" id="tbCAPEC" />
+				<input type="button" value="Check CAPEC" onclick = "checkCAPEC()"/>
+				<input type="text" id="tbResultCAPEC" readonly="readonly"/>
+				<br />
+				<br />
+				
+				CVE -<input type="text" id="tbCVE" />
+				<input type="button" value="Check CVE" onclick = "checkCVE()"/>
+				<input type="text" id="tbResultCVE" readonly="readonly"/>
+				<br />
+				<br />
+				CWE -<input type="text" id="tbCWE" />
+				<input type="button" value="Check CWE" onclick = "checkCWE()"/>
+				<input type="text" id="tbResultCWE" readonly="readonly"/>
+		</div>
 		
+		<input type="button" value="Save and Add to table" onclick="saveAndAddData()"/>
+		<input type="button" value="clear" onclick="clearDiv()" />
+		
+		<br />
+		<br />
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th rowspan = "2">#</th>
+					<th rowspan = "2">Asset ID</th>
+					<th rowspan = "2">Threat Activity <br />Malicious Goal</th>
+					<th colspan = "2">CAPEC</th>
+					<th colspan = "2">CVE</th>
+					<th colspan = "2">CWE</th>
+					<th rowspan = "2">Activity Description</th>
+				</tr>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>ID</th>
+					<th>Name</th>
+					<th>ID</th>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody id = "resultMActTable">
+	
+			</tbody>
+		</table>
+			
+		<br />
+	
+	</div>
+	<input type="button" value="Next" onclick="goToNextStep()" />
 
 </body>
 </html>
