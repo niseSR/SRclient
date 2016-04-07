@@ -151,22 +151,31 @@
 		<option value="AS_ME">(ME)Media</option>
 	</select>
 	<input type="button" value="SelectSubCategory" onclick = "selectSubAssetType()"/>
-	<select id="AssetType2"></select>
+	<select id="AssetType2">
+		<option value="0">-- Select --</option>
+	</select>
 	<input type="button" value="SelectDomainAsset" onclick = "selectDomainAsset()"/>
-	<select id="AssetType3"></select>
-	<br />
-	<input type="checkbox" id="ThreatCheck" />
-	<label for="Threat ID">Threat Name</label>
-	<input type="text"  id = "tbThreatName"/>
+	<select id="AssetType3">
+		<option value="0">-- Select --</option>
+	</select>
 	
+	<br />
+	<div id = "domainasInfo">
+	</div>
 	
-	<input type="checkbox" id="ThreatCheck" />
-	<label for="Threat ID">Threat ID</label>
-	<input type="text"  id = "tbThreatID"/>
-	<input type="button" value="Find Threat" id = "btFindThreat" onclick = "findThreat()"/>
+	<br />
+	<div id ="findThreatByID">
+		<label for="Threat ID">Threat Name</label>
+		<input type="text"  id = "tbThreatName"/>
+		<input type="button" value="Find Threat" id = "btFindThreat" onclick = "findThreatByName()"/>
+		<select id="sbThreatID">
+			<option value="0">-- Select --</option>
+		</select>
+	</div>
 	<br />
 	<br />
-	<input type="button" value="Calculating Recommend Countermeasure" />
+
+	<input type="button" value="Calculating Recommend Countermeasure" onclick = "calculatingCM()"/>
 	<input type="button" value="clear" />
 	
 	<br />
@@ -214,88 +223,8 @@
 				<th>D</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td>1</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td><input type="button" value="Find CM" id = "btFindCM" onclick = "goForRecommendingCM()"/></td>
-			</tr>
-			<tr class="success">
-				<td>3</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td><input type="button" value="Find CM" id = "btFindCM" onclick = "goForRecommendingCM()"/></td>
-			</tr>
-			<tr class="danger">
-				<td>4</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td>데이터2</td>
-				<td><input type="button" value="Find CM" id = "btFindCM" onclick = "goForRecommendingCM()"/></td>
-			</tr>
+		<tbody id="riskAssessmentsTemplateBody">
+
 		</tbody>
 	</table>
 	

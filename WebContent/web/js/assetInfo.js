@@ -78,7 +78,7 @@ function goalCalculating(resultM, resultP, resultR){
 		if (resultP == "C" && resultR =="C") return resultSGoal = "RPRR";
 		if (resultM == "C") return resultSGoal = "RM";
 		if (resultP == "C") return resultSGoal = "RP";
-		if (resultR == "C") return resultSGoal = "RN";
+		if (resultR == "C") return resultSGoal = "RR";
 	}else if (resultM == "R" || resultP =="R" || resultR =="R"){
 		return resultSGoal = "R";
 	}else{

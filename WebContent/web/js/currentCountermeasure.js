@@ -120,8 +120,11 @@ function submitCurrentCMInfo()
 {
 	var param = "currentcmCMID=" + $("#CountermeasureType2 option:selected").val() 
 		+ "&currentcmImplcmID=" + $("#ImplCountermeasure option:selected").val()
-		+ "&currentcmUserID=" + implement_pbkdf2(sessionStorage.getItem("SRClient.id"));
-
+		+ "&currentcmUserID=" + implement_pbkdf2(sessionStorage.getItem("SRClient.id"))
+		+ "&currentcmID=" + $("#ImplCountermeasure option:selected").val() 
+		+ "_" + sessionStorage.getItem("SRClient.company")
+		+ "&currentcmImplcmName=" + $("#ImplCountermeasure option:selected").text();
+		
 	$.ajax({
         type: "POST",
         url: "http://" + domainText + "/SRserver/arcinfo/submit_CurrentCMInfo.do",
