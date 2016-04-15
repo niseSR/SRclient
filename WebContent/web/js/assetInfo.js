@@ -3,6 +3,9 @@ var domainText = getDomain();
 var rowCount = 1;
 // Asset의 대분류에 따라 Asset의 세부분류 정보 가져오기
 function loadAssetInfoPage(){
+	if (check_session()=="RL") 	location.href="../main.html";
+	member_load();
+	
 	var param = "relatedshUserID="+implement_pbkdf2(sessionStorage.getItem("SRClient.id"));
 	$.ajax({
         type: "POST",
