@@ -100,8 +100,10 @@ tr, td {
 								<ul class="nav navbar-nav">
 									<li>ID :</li>
 									<li id="sessionId"></li>
+									<li></li><li></li><li></li>
 									<li>Company :</li>
 									<li id="sessionCompany"></li>
+									<li></li><li></li><li></li>
 									<li>Name :</li>
 									<li id="sessionName"></li>
 								</ul>
@@ -149,13 +151,14 @@ tr, td {
 	<!--End Header-->
 
 	<h1>
-		Architecture Info > <select id="ArchitectureInfo">
+		Architecture Info > <select id="ArchitectureInfo" style="font-size:25px; line-height:50px;margin:0">
 			<option value="0">-- Select --</option>
 			<option value="1">Stakeholders Info</option>
 			<option value="2">Platform Info</option>
 			<option value="3">Asset Info</option>
 			<option value="4">Current Countermeasure</option>
-		</select>  <input type="button" value="Go!" onclick="moveToAIPage()" /> 
+		</select>
+		<input style="font-size:25px; line-height:30px;margin:0" type="button" value="Go!" onclick = "moveToAIPage()"/>
 	</h1>
 
 	<br />
@@ -216,17 +219,23 @@ tr, td {
 	<td><input type="text" id="tbTargetHardware" value="*" /></td>
 	</tr>
 	
+	<tr><td><label for="Platform Other">other : </label></td></tr>
+	
+	</table>
+	
+	<table   width="500" height="100">
+	
+	<tr><td><textarea rows="5" cols="30" name="contents" id="taOther">*</textarea></td></tr>
 	
 	</table>
 	
 	
-	<label for="Platform Other">other : </label>
-	<textarea rows="5" cols="30" name="contents" id="taOther">*</textarea>
 	
-
-	<br />
-	<br />
-	<input type="button" value="Submit" onclick="submitPlatformInfo()" />
-	<input type="button" value="Back To Home" onclick="backToHome()" />
+	<table>
+	<tr>
+	<td><input type="button" value="Submit" onclick="submitPlatformInfo()" /></td>
+	<td><input type="button" value="Back To Home" onclick="backToHome()" /></td>
+	</tr>
+	</table>
 </body>
 </html>
