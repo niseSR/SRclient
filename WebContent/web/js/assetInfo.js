@@ -162,19 +162,19 @@ function addRow(){
 	rowCount = rowCount+1;
 	var html = '';
 	html += '<tr>';
-	html += '<td>'+rowCount+ '</td>'
-	html += '<td><input type="text" id="tbPlatformPart'+rowCount+'" /></td>';
-	html += '<td><input type="text" id="tbPlatformVendor'+rowCount+'" /></td>';
-	html += '<td><input type="text" id="tbPlatformProduct'+rowCount+'" /></td>';
-	html += '<td><input type="text" id="tbPlatformVersion'+rowCount+'" value = "*"/></td>';
-	html += '<td><input type="text" id="tbPlatformUpdate'+rowCount+'" value = "*"/></td>';
-	html += '<td><input type="text" id="tbPlatformEdition'+rowCount+'" value = "*"/></td>';
-	html += '<td><input type="text" id="tbPlatformLanguage'+rowCount+'" value = "*"/></td>';
-	html += '<td><input type="text" id="tbsoftwareEdition'+rowCount+'" value = "*"/></td>';
-	html += '<td><input type="text" id="tbTargetSoftware'+rowCount+'" value = "*"/></td>';
-	html += '<td><input type="text" id="tbTargetHardware'+rowCount+'" value = "*"/></td>';
-	html += '<td><input type="text" id="taOther'+rowCount+'" value = "*"/></td>';
-	html += '<td id="platformID'+rowCount+'"><input type="button" value="platformID" id = "btshowplatform'+rowCount+'" onclick = "showPlatformID('+rowCount+')"/></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px">'+rowCount+ '</td>'
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformPart'+rowCount+'" /></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformVendor'+rowCount+'" /></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformProduct'+rowCount+'" /></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformVersion'+rowCount+'" value = "*"/></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformUpdate'+rowCount+'" value = "*"/></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformEdition'+rowCount+'" value = "*"/></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformLanguage'+rowCount+'" value = "*"/></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbsoftwareEdition'+rowCount+'" value = "*"/></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbTargetSoftware'+rowCount+'" value = "*"/></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbTargetHardware'+rowCount+'" value = "*"/></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="taOther'+rowCount+'" value = "*"/></td>';
+	html += '<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px" id="platformID'+rowCount+'"><input style="width:100%" type="button" value="platformID" id = "btshowplatform'+rowCount+'" onclick = "showPlatformID('+rowCount+')"/></td>';
 	html += '</tr>';
 	$("#platformTable").append(html);
 }

@@ -1,5 +1,5 @@
 function getDomain(){
-	return "210.107.198.173:8080";
+	return "localhost:8080";
 }
 
 (function($){

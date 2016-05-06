@@ -62,13 +62,17 @@
 
 <style>
 
+
 tr, td {
-    
-  
-   
-  
-    
+	padding-right:16px;
+	padding-top:4px;
+	padding-bottom:4px;
 }
+
+td{
+	text-align:left;
+}
+
 </style>
 
 </head>
@@ -104,11 +108,9 @@ tr, td {
 								<ul class="nav navbar-nav">
 									<li>ID :</li>
 									<li id="sessionId"></li>
-									<li></li><li></li><li></li>
-									<li>Company :</li>
+									<li>&nbsp;&nbsp;Company :</li>
 									<li id="sessionCompany"></li>
-									<li></li><li></li><li></li>
-									<li>Name :</li>
+									<li>&nbsp;&nbsp;Name :</li>
 									<li id="sessionName"></li>
 								</ul>
 
@@ -153,16 +155,22 @@ tr, td {
 		<!--/#logo-bar -->
 	</header>
 	<!--End Header-->
-
-	<h1>
+	
+	<div style="float:left;width:10%;height:100%;background-Color:#fff">
+		<h1> Tree frame 준비중</h1>
+	</div>
+	
+	
+	<div style="clear:right;float:right;width:90%;height:100%;background-Color:#fff;padding-left:228px">
+		<h1 >
 		Architecture Info > <select id="ArchitectureInfo" style="font-size:25px; line-height:50px;margin:0">
-			<option value="0">-- Select --</option>
-			<option value="1">Stakeholders Info</option>
-			<option value="2">Platform Info</option>
-			<option value="3">Asset Info</option>
-			<option value="4">Current Countermeasure</option>
+			<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Select --</option>
+			<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stakeholders Info</option>
+			<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Platform Info</option>
+			<option value="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asset Info</option>
+			<option value="4">&nbsp;&nbsp;&nbsp;&nbsp;Current Countermeasure</option>
 		</select>
-		<input style="font-size:25px; line-height:30px;margin:0" type="button" value="Go!" onclick = "moveToAIPage()"/>
+		<input style="font-size:25px; line-height:30px;margin:0" type="button" value="GO" onclick = "moveToAIPage()"/>
 	</h1>
 
 	<br />
@@ -170,68 +178,73 @@ tr, td {
 	<h2>Current Countermeasure Information</h2>
 	
 	
+	<table>
 	
+	<tr>
+		<td><label for="PlatformID">Related Asset ID&nbsp;</label><label for="AssetType"> Asset Type</label></td>
+		<td>
+			<select style="width:257px" id="AssetType1">
+			<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Select --</option>
+			<option value="DA">(DA)Data</option>
+			<option value="DU">(DU)Documents</option>
+			<option value="SW">(SW)Software</option>
+			<option value="SV">(SV)Server</option>
+			<option value="WS">(WS)Work Station</option>
+			<option value="NW">(NW)Network</option>
+			<option value="FC">(FC)Facility</option>
+			<option value="SU">(SU)Support Service</option>
+			<option value="PE">(PE)Personnel</option>
+			<option value="ME">(ME)Media</option>
+			</select>
+		
+			<input style="width:240px" type="button" value="FindAssetType" onclick="findAssetType()" />
+		</td>
+		<td><select id="AssetType2"></select></td>
 	
-	<label for="PlatformID">Related Asset ID</label>
-	<label for="AssetType">Asset Type</label>
-	<select id="AssetType1">
-		<option value="0">-- Select --</option>
-		<option value="DA">(DA)Data</option>
-		<option value="DU">(DU)Documents</option>
-		<option value="SW">(SW)Software</option>
-		<option value="SV">(SV)Server</option>
-		<option value="WS">(WS)Work Station</option>
-		<option value="NW">(NW)Network</option>
-		<option value="FC">(FC)Facility</option>
-		<option value="SU">(SU)Support Service</option>
-		<option value="PE">(PE)Personnel</option>
-		<option value="ME">(ME)Media</option>
-	</select>
+	</tr>
 	
-	<input type="button" value="FindAssetType" onclick="findAssetType()" />
-	<select id="AssetType2"></select>
+	<tr>
+		<td><label for="PlatformID">Countermeasure ID</label></td>
+		
+		<td>
+			<select id="CountermeasureType1">
+			<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Select --</option>
+			<option value="MC">(MC)Monitoring Confidentiality</option>
+			<option value="PC">(PC)Preventing Confidentiality</option>
+			<option value="RC">(RC)Recovery Confidentiality</option>
+			<option value="MI">(MI)Monitoring Integrity</option>
+			<option value="PI">(PI)Preventing Integrity</option>
+			<option value="RI">(RI)Recovery Integrity</option>
+			<option value="MA">(MA)Monitoring Availability</option>
+			<option value="PA">(PA)Preventing Availability</option>
+			<option value="RA">(RA)Recovery Availability</option>
+			</select>
+		
+			<input type="button" value="Find Countermeasure Type"
+				onclick="findCountermeasureType()" />
+		</td>
 	
-	<br />
+		<td><select id="CountermeasureType2"></select></td>
+		
+	</tr>
 	
+	<tr>
+		<td><label for="Platform Name">Implemented Countermeasure</label></td>
+		<td style="text-align:center"><input style="width:100%" type="button" value="Find Implementable Countermeasure"
+		onclick="findImplementableCM()" /></td>
+		<td><select id="ImplCountermeasure"></select></td>
 	
-	<label for="PlatformID">Countermeasure ID</label>
-	<select id="CountermeasureType1">
-		<option value="0">-- Select --</option>
-		<option value="MC">(MC)Monitoring Confidentiality</option>
-		<option value="PC">(PC)Preventing Confidentiality</option>
-		<option value="RC">(RC)Recovery Confidentiality</option>
-		<option value="MI">(MI)Monitoring Integrity</option>
-		<option value="PI">(PI)Preventing Integrity</option>
-		<option value="RI">(RI)Recovery Integrity</option>
-		<option value="MA">(MA)Monitoring Availability</option>
-		<option value="PA">(PA)Preventing Availability</option>
-		<option value="RA">(RA)Recovery Availability</option>
-	</select>
+	</tr>
 	
+	</table>
 	
-	<input type="button" value="Find Countermeasure Type"
-		onclick="findCountermeasureType()" />
-	<select id="CountermeasureType2"></select>
-	
-	<br />
 
-	
-	<label for="Platform Name">Implemented Countermeasure</label></td>
-	<input type="button" value="Find Implementable Countermeasure"
-		onclick="findImplementableCM()" />
-	<select id="ImplCountermeasure">
-
-	
-
-	</select>
-	
-	
-	
-	
-
-	<br />
 	<br />
 	<input type="button" value="Submit" onclick="submitCurrentCMInfo()" />
 	<input type="button" value="Back To Home" onclick="backToHome()" />
+		
+	</div>
+
+	
 </body>
 </html>

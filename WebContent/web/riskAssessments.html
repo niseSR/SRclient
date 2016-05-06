@@ -47,6 +47,17 @@
 	
 	<script type="text/javascript" src="js/common.js"></script>     <!-- WARNING: 공통으로 들어가는 Javascript 파일 -->
 	<script type="text/javascript" src="js/riskAssessments.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
+<style>	
+	tr, td {
+	padding-right:16px;
+	padding-top:4px;
+	padding-bottom:4px;
+}
+
+
+</style>
+
+
 </head>
 <body onload="onloadHome()">
 <!--Start Header-->
@@ -79,9 +90,9 @@
 								<ul class="nav navbar-nav">
 									<li>ID :</li>
 									<li id="sessionId"></li>
-									<li>Company :</li>
+									<li>&nbsp;&nbsp;Company :</li>
 									<li id="sessionCompany"></li>
-									<li>Name :</li>
+									<li>&nbsp;&nbsp;Name :</li>
 									<li id="sessionName"></li>
 								</ul>
 
@@ -132,13 +143,23 @@
 </header>
 <!--End Header-->
 
-<h1>
+
+	<div style="float:left;width:10%;height:100%;background-Color:#fff">
+		<h1> Tree frame 준비중</h1>
+	</div>
+	
+	
+	<div style="clear:right;float:right;width:90%;height:100%;background-Color:#fff;padding-left:228px">
+		<h1>
 	Risk Assessment > Risk Assessments</h1>
 	
 	<br />
-	<label for="AssetType">Related Asset Type</label>
-	<select id="AssetType1">
-		<option value="0">-- Select --</option>
+	
+	<table>
+	<tr>
+	<td><label for="AssetType">Related Asset Type</label></td>
+	<td><select id="AssetType1">
+		<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Select --</option>
 		<option value="AS_DA">(DA)Data</option>
 		<option value="AS_DU">(DU)Documents</option>
 		<option value="AS_SW">(SW)Software</option>
@@ -150,14 +171,16 @@
 		<option value="AS_PE">(PE)Personnel</option>
 		<option value="AS_ME">(ME)Media</option>
 	</select>
-	<input type="button" value="SelectSubCategory" onclick = "selectSubAssetType()"/>
-	<select id="AssetType2">
+	<input type="button" value="SelectSubCategory" onclick = "selectSubAssetType()"/></td>
+	<td><select id="AssetType2">
 		<option value="0">-- Select --</option>
 	</select>
-	<input type="button" value="SelectDomainAsset" onclick = "selectDomainAsset()"/>
-	<select id="AssetType3">
+	<input type="button" value="SelectDomainAsset" onclick = "selectDomainAsset()"/></td>
+	<td><select id="AssetType3">
 		<option value="0">-- Select --</option>
-	</select>
+	</select></td>
+	</tr>
+	</table>
 	
 	<br />
 	<div id = "domainasInfo">
@@ -165,12 +188,16 @@
 	
 	<br />
 	<div id ="findThreatByID">
-		<label for="Threat ID">Threat Name</label>
-		<input type="text"  id = "tbThreatName"/>
-		<input type="button" value="Find Threat" id = "btFindThreat" onclick = "findThreatByName()"/>
-		<select id="sbThreatID">
+		<table>
+		<tr>
+		<td><label for="Threat ID">Threat Name</label></td>
+		<td><input type="text"  id = "tbThreatName"/></td>
+		<td><input type="button" value="Find Threat" id = "btFindThreat" onclick = "findThreatByName()"/></td>
+		<td><select id="sbThreatID">
 			<option value="0">-- Select --</option>
-		</select>
+		</select></td>
+		</tr>
+		</table>
 	</div>
 	<br />
 	<br />
@@ -180,7 +207,7 @@
 	
 	<br />
 	<br />
-	<table class="table table-striped table-bordered table-hover">
+	<table class="table table-striped table-bordered table-hover" style="margin-left:0">
 		<caption>Risk Assessments Template</caption>
 		<thead>
 			<tr>
@@ -227,6 +254,8 @@
 
 		</tbody>
 	</table>
+	</div>
+	
 	
 		
 		

@@ -53,6 +53,19 @@
 	<script type="text/javascript" src="js/common.js"></script>     <!-- WARNING: 공통으로 들어가는 Javascript 파일 -->
 	<script type="text/javascript" src="js/assetInfo.js"></script> 		<!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
 
+<style>
+
+
+tr, td {
+	padding-right:16px;
+	padding-top:4px;
+	padding-bottom:4px;
+}
+
+
+
+</style>
+
 </head>
 <body onload="loadAssetInfoPage()">
 
@@ -86,11 +99,9 @@
 								<ul class="nav navbar-nav">
 									<li>ID :</li>
 									<li id="sessionId"></li>
-									<li></li><li></li><li></li>
-									<li>Company :</li>
+									<li>&nbsp;&nbsp;Company :</li>
 									<li id="sessionCompany"></li>
-									<li></li><li></li><li></li>
-									<li>Name :</li>
+									<li>&nbsp;&nbsp;Name :</li>
 									<li id="sessionName"></li>	
 								</ul>
 
@@ -135,27 +146,39 @@
 		<!--/#logo-bar -->
 	</header>
 	<!--End Header-->
-<body onload = "loadAssetInfoPage()">
-	<h1>
+	
+	<div style="float:left;width:10%;height:100%;background-Color:#fff">
+		<h1> Tree frame 준비중</h1>
+	</div>
+	
+	
+	<div style="clear:right;float:right;width:90%;height:100%;background-Color:#fff;padding-left:228px">
+		<h1 >
 		Architecture Info > <select id="ArchitectureInfo" style="font-size:25px; line-height:50px;margin:0">
-			<option value="0">-- Select --</option>
-			<option value="1">Stakeholders Info</option>
-			<option value="2">Platform Info</option>
-			<option value="3">Asset Info</option>
-			<option value="4">Current Countermeasure</option>
+			<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Select --</option>
+			<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stakeholders Info</option>
+			<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Platform Info</option>
+			<option value="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asset Info</option>
+			<option value="4">&nbsp;&nbsp;&nbsp;&nbsp;Current Countermeasure</option>
 		</select>
-		<input style="font-size:25px; line-height:30px;margin:0" type="button" value="Go!" onclick = "moveToAIPage()"/>
+		<input style="font-size:25px; line-height:30px;margin:0" type="button" value="GO" onclick = "moveToAIPage()"/>
 	</h1>
 
 	<br />
 	
-	<h2> Asset Information</h2>  
+	<table>
+	<tr><td><h2> Asset Information</h2></td></tr>
+	</table>
 
-	<label for="AssetName">Asset Name</label>
-	<input type="text" id="tbAssetName" />
-	<label for="AssetType">Asset Type</label>
-	<select id="AssetType1">
-		<option value="0">-- Select --</option>
+	<table>
+	<tr>
+	<td><label for="AssetName">Asset Name </label></td>
+	<td><input style="width:100%" type="text" id="tbAssetName" /></td>
+	</tr>
+	<tr>
+	<td><label for="AssetType">Asset Type </label></td>
+	<td><select id="AssetType1">
+		<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Select --</option>
 		<option value="AS_DA">(DA)Data</option>
 		<option value="AS_DU">(DU)Documents</option>
 		<option value="AS_SW">(SW)Software</option>
@@ -167,28 +190,44 @@
 		<option value="AS_PE">(PE)Personnel</option>
 		<option value="AS_ME">(ME)Media</option>
 	</select>
-	<input type="button" value="Select" onclick = "selectSubAssetType()"/>
-	<select id="AssetType2">
+	
+	
+	
+	<input type="button" value="Select" onclick = "selectSubAssetType()"/></td>
+	<td><select id="AssetType2">
 				
 	</select>
-	<br />
-	<label for="AssetCriticality">Asset Criticality</label>
-	<select id="AssetCriticality">
-		<option value="0">-- Select --</option>
+	</td>
+	</tr>
+	
+	<tr>
+	<td><label for="AssetCriticality">Asset Criticality&nbsp;</label></td>
+	<td><select style="width:173px" id="AssetCriticality">
+		<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Select --</option>
 		<option value="H">High</option>
 		<option value="M">Medium</option>
 		<option value="L">Low</option>
 		
-	</select>
+	</select></td>
+	</tr>
+	
+	<tr>
+	<td colspan="5" ><label for="AssetDescription">Asset Description</label></td>
+	</tr>
+	
+	<tr>
+	<td colspan="5"><textarea rows="5" cols="30" name="contents" id="taAssetDescription"></textarea></td>
+	</tr>
+	
+	
+	</table>
+	
+	<br />
 	<br />
 	
-	<label for="AssetDescription">Asset Description</label>
-	<textarea rows="5" cols="30" name="contents" id="taAssetDescription"></textarea>
-	<br />
-	<br />
 
-	<table class="table table-striped table-bordered table-hover">
-		<label for="RequiredSecurityGoal">Required Security Goal</label>
+	<table class="table table-striped table-bordered table-hover" style="margin-left:0">
+		<label for="RequiredSecurityGoal" >Required Security Goal</label>
 		<thead>
 			<tr>
 				<th>#</th>
@@ -262,56 +301,71 @@
 			</tr>
 		</tbody>
 	</table>
+	<br />
+	<br />
 	<label for="PlatformInfo">Platform Info</label>
-	</br>
-	<table class="table table-striped table-bordered table-hover">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Part(*)</th>
-				<th>Vendor(*)</th>
-				<th>Product(*)</th>
-				<th>Version</th>
-				<th>Update</th>
-				<th>Edition</th>
-				<th>Language</th>
-				<th>Software Edition</th>
-				<th>Target Software</th>
-				<th>Target Hardware</th>
-				<th>Other</th>
-				<th>Platform ID</th>
+	<br />
+	<table style="border-collapse:collapse;width:90%">
+	
+			<tr style="padding-right:0">
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px">#</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px;width:1%">Part(*)</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px">Vendor(*)</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px">Product(*)</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px;width:1%">Version</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px;width:1%">Update</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px;width:1%">Edition</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px">Language</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px">Software<br />Edition</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px">Target<br />Software</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px">Target<br />Hardware</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px">Other</td>
+				<td style="border:1px solid silver;text-align:center;font-weight:bold;padding-right:8px;padding-left:8px;width:20%">Platform ID</td>
+				
+				
 			</tr>
-		</thead>
-		<tbody id = "platformTable">
-			<tr>
-				<td>1</td>
-				<td><input type="text" id="tbPlatformPart1" /></td>
-				<td><input type="text" id="tbPlatformVendor1" /></td>
-				<td><input type="text" id="tbPlatformProduct1" /></td>
-				<td><input type="text" id="tbPlatformVersion1" value = "*"/></td>
-				<td><input type="text" id="tbPlatformUpdate1" value = "*"/></td>
-				<td><input type="text" id="tbPlatformEdition1" value = "*"/></td>
-				<td><input type="text" id="tbPlatformLanguage1" value = "*"/></td>
-				<td><input type="text" id="tbsoftwareEdition1" value = "*"/></td>
-				<td><input type="text" id="tbTargetSoftware1" value = "*"/></td>
-				<td><input type="text" id="tbTargetHardware1" value = "*"/></td>
-				<td><input type="text" id="taOther1" value = "*"/></td>
-				<td id="platformID1"><input type="button" value="platformID" id = "btshowplatform1" onclick = "showPlatformID(1)"/></td>
-			</tr>
-		</tbody>
-	</table>
+			
+			<tbody id = "platformTable">
+				<tr>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px">1</td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformPart1" /></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformVendor1" /></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformProduct1" /></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformVersion1" value = "*"/></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformUpdate1" value = "*"/></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformEdition1" value = "*"/></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbPlatformLanguage1" value = "*"/></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbsoftwareEdition1" value = "*"/></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbTargetSoftware1" value = "*"/></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="tbTargetHardware1" value = "*"/></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px"><input style="width:100%" type="text" id="taOther1" value = "*"/></td>
+					<td style="border:1px solid silver;text-align:center;padding-right:8px;padding-left:8px" id="platformID1"><input style="width:100%" type="button" value="platformID" id = "btshowplatform1" onclick = "showPlatformID(1)"/></td>
+				</tr>
+			</tbody>
+		
+		
+		
+		</table>
+	<br />
 	<input type="button" value="Addrow" onclick = "addRow()"/>
-	</br>
-	</br>
+	<br />
+	<br />
 	<label for="RelatedStakeholdersInfo">Related Stakeholders Info</label>
 	
 	<div id="RelatedSTakeholdersInfo">
 	
+	
 	</div>
-	</br>
-	</br>
+	<br />
+	<br />
 	
 	<input type="button" value="submit" onclick = "submitAssetInfo()"/>
 	<input type="button" value="Back To Home" onclick = "backToHome()"/>
+	
+	</div>
+	
+	
+	
+	
 </body>
 </html>

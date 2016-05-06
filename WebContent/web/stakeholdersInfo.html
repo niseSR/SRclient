@@ -60,6 +60,17 @@
 <script type="text/javascript" src="js/stakeholdersInfo.js"></script>
 <!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
 
+<style>
+tr, td {
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	margin:auto;
+}
+
+</style>
+
 </head>
 <body onload="onloadHome()">
 
@@ -79,10 +90,10 @@
 					</div>
 
 					<div class="col-md-2 col-sm-2">
-						<div id=lab style="margin-top:20px">
+						<div id=lab style="margin-top: 20px">
 
 
-							<h1 style="color:#fff">NISE Lab.</h1>
+							<h1 style="color: #fff">NISE Lab.</h1>
 						</div>
 					</div>
 
@@ -93,11 +104,9 @@
 								<ul class="nav navbar-nav">
 									<li>ID :</li>
 									<li id="sessionId"></li>
-									<li></li><li></li><li></li>
-									<li>Company :</li>
+									<li>&nbsp;&nbsp;Company :</li>
 									<li id="sessionCompany"></li>
-									<li></li><li></li><li></li>
-									<li>Name :</li>
+									<li>&nbsp;&nbsp;Name :</li>
 									<li id="sessionName"></li>
 								</ul>
 
@@ -143,30 +152,66 @@
 	</header>
 	<!--End Header-->
 
-	<h1>
-		Architecture Info > <select id="ArchitectureInfo" style="font-size:25px; line-height:50px;margin:0">
-			<option value="0">-- Select --</option>
-			<option value="1">Stakeholders Info</option>
-			<option value="2">Platform Info</option>
-			<option value="3">Asset Info</option>
-			<option value="4">Current Countermeasure</option>
-		</select>
-		<input style="font-size:25px; line-height:30px;margin:0" type="button" value="Go!" onclick = "moveToAIPage()"/>
-	</h1>
+	<div
+		style="float: left; width: 10%; height: 100%; background-Color: #fff">
+		<h1>Tree frame 준비중</h1>
+	</div>
 
-	<br />
 
-	<h2>Stakeholder Information</h2>
+	<div
+		style="clear: right; float: right; width: 90%; height: 100%; background-Color: #fff;padding-left:228px">
+		<h1>
+			Architecture Info > <select id="ArchitectureInfo"
+				style="font-size: 25px; line-height: 50px; margin: 0">
+				<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--
+					Select --</option>
+				<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stakeholders
+					Info</option>
+				<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Platform
+					Info</option>
+				<option value="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asset
+					Info</option>
+				<option value="4">&nbsp;&nbsp;&nbsp;&nbsp;Current
+					Countermeasure</option>
+			</select> <input style="font-size: 25px; line-height: 30px; margin: 0"
+				type="button" value="GO" onclick="moveToAIPage()" />
+		</h1>
 
-	<label for="AssetName">Stakeholder Name : </label>
-	<input type="text" id="tbStakeholdersName" />
-	<br />
-	<label for="AssetDescription">Stakeholder Description</label>
-	<textarea rows="5" cols="30" name="contents"
-		id="taStakeholdersDescription"></textarea>
-	<br />
-	<br />
-	<input type="button" value="Submit" onclick="submitStakeholderInfo()" />
-	<input type="button" value="Back To Home" onclick="backToHome()" />
+		<br />
+
+		<table>
+			<tr>
+				<td><h2>Stakeholder Information</h2></td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td><label for="AssetName">Stakeholder Name </label></td>
+				<td><input type="text" id="tbStakeholdersName" /></td>
+			</tr>
+
+			<tr>
+				<td colspan="2"><label for="AssetDescription">Stakeholder
+						Description</label></td>
+			</tr>
+
+			<tr>
+				<td colspan="2"><textarea rows="5" cols="30" name="contents"
+						id="taStakeholdersDescription"></textarea></td>
+
+			</tr>
+		
+			<tr>
+				<td><input style="width:100%" type="button" value="Submit"
+					onclick="submitStakeholderInfo()" /></td>
+				<td><input style="width:100%" type="button" value="Back To Home"
+					onclick="backToHome()" /></td>
+			</tr>
+
+		</table>
+	</div>
+
+
 </body>
 </html>

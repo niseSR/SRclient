@@ -61,10 +61,17 @@
 <!-- WARNING: 각 페이지에만 들어가는 Javascript 파일 -->
 
 <style>
-
 tr, td {
-    padding: 10px;
+	
+	padding-right: 16px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
+
+td{
+	text-align:left;
+}
+
 </style>
 
 </head>
@@ -86,10 +93,10 @@ tr, td {
 					</div>
 
 					<div class="col-md-2 col-sm-2">
-						<div id=lab style="margin-top:20px">
+						<div id=lab style="margin-top: 20px">
 
 
-							<h1 style="color:#fff">NISE Lab.</h1>
+							<h1 style="color: #fff">NISE Lab.</h1>
 						</div>
 					</div>
 
@@ -100,11 +107,9 @@ tr, td {
 								<ul class="nav navbar-nav">
 									<li>ID :</li>
 									<li id="sessionId"></li>
-									<li></li><li></li><li></li>
-									<li>Company :</li>
+									<li>&nbsp;&nbsp;Company :</li>
 									<li id="sessionCompany"></li>
-									<li></li><li></li><li></li>
-									<li>Name :</li>
+									<li>&nbsp;&nbsp;Name :</li>
 									<li id="sessionName"></li>
 								</ul>
 
@@ -150,92 +155,117 @@ tr, td {
 	</header>
 	<!--End Header-->
 
-	<h1>
-		Architecture Info > <select id="ArchitectureInfo" style="font-size:25px; line-height:50px;margin:0">
-			<option value="0">-- Select --</option>
-			<option value="1">Stakeholders Info</option>
-			<option value="2">Platform Info</option>
-			<option value="3">Asset Info</option>
-			<option value="4">Current Countermeasure</option>
-		</select>
-		<input style="font-size:25px; line-height:30px;margin:0" type="button" value="Go!" onclick = "moveToAIPage()"/>
-	</h1>
+	<div
+		style="float: left; width: 10%; height: 100%; background-Color: #fff">
+		<h1>Tree frame 준비중</h1>
+	</div>
 
-	<br />
 
-	<h2>Platform Information</h2>
-	
-	
-	<table>
-	
-	<tr>
-	 <td> <label for="PlatformPart">Platform Part(*) : </label> </td>
-	<td> <input type="text" onkeypress="toLower()" id="tbPlatformPart"
-		style="ime-mode: disabled;" /> </td>
-	</tr>
-	
-	<tr>
-	<td><label for="Platform Vendor">Platform Vendor(*) : </label> </td>
-	<td><input type="text" id="tbPlatformVendor" /> </td>
-	</tr>
+	<div
+		style="clear: right; float: right; width: 90%; height: 100%; background-Color: #fff;padding-left:228px">
+		<h1>
+			Architecture Info > <select id="ArchitectureInfo"
+				style="font-size: 25px; line-height: 50px; margin: 0">
+				<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--
+					Select --</option>
+				<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stakeholders
+					Info</option>
+				<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Platform
+					Info</option>
+				<option value="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asset
+					Info</option>
+				<option value="4">&nbsp;&nbsp;&nbsp;&nbsp;Current
+					Countermeasure</option>
+			</select> <input style="font-size: 25px; line-height: 30px; margin: 0"
+				type="button" value="GO" onclick="moveToAIPage()" />
+		</h1>
 
-	<tr>
-	<td><label for="Platform Product">Platform Product(*) : </label></td>
-	<td><input type="text" id="tbPlatformProduct" /></td>
-	</tr>
-	
-	<tr>
-	<td><label for="Platform Version">Platform Version :</label></td>
-	<td><input type="text" id="tbPlatformVersion" value="*" /></td>
-	</tr>
-	
-	<tr>
-	<td><label for="Platform Update">Platform Update :</label></td>
-	<td><input type="text" id="tbPlatformUpdate" value="*" /></td>
-	</tr>
-	
-	<tr>
-	<td><label for="Platform Edition">Platform Edition :</label></td>
-	<td><input type="text" id="tbPlatformEdition" value="*" /></td>
-	</tr>
-	
-	<tr>
-	<td><label for="Platform Language">Platform Language :</label></td>
-	<td><input type="text" id="tbPlatformLanguage" value="*" /></td>
-	</tr>
-	
-	<tr>
-	<td><label for="Software Edition">Software Edition : </label></td>
-	<td><input type="text" id="tbsoftwareEdition" value="*" /></td>
-	</tr>
-	
-	<tr>
-	<td><label for="Target Software">Target Software : </label></td>
-	<td><input type="text" id="tbTargetSoftware" value="*" /></td>
-	</tr>
-	
-	<tr>
-	<td><label for="Target Hardware">Target Hardware : </label></td>
-	<td><input type="text" id="tbTargetHardware" value="*" /></td>
-	</tr>
-	
-	<tr><td><label for="Platform Other">other : </label></td></tr>
-	
-	</table>
-	
-	<table   width="500" height="100">
-	
-	<tr><td><textarea rows="5" cols="30" name="contents" id="taOther">*</textarea></td></tr>
-	
-	</table>
-	
-	
-	
-	<table>
-	<tr>
-	<td><input type="button" value="Submit" onclick="submitPlatformInfo()" /></td>
-	<td><input type="button" value="Back To Home" onclick="backToHome()" /></td>
-	</tr>
-	</table>
+		<br />
+
+		<table>
+			<tr>
+				<td><h2>Platform Information</h2></td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td><label for="PlatformPart">Platform Part(*)</label></td>
+				<td><input type="text" onkeypress="toLower()"
+					id="tbPlatformPart" style="ime-mode: disabled;" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="Platform Vendor">Platform Vendor(*)</label></td>
+				<td><input type="text" id="tbPlatformVendor" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="Platform Product">Platform Product(*)</label></td>
+				<td><input type="text" id="tbPlatformProduct" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="Platform Version">Platform Version</label></td>
+				<td><input type="text" id="tbPlatformVersion" value="*" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="Platform Update">Platform Update</label></td>
+				<td><input type="text" id="tbPlatformUpdate" value="*" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="Platform Edition">Platform Edition</label></td>
+				<td><input type="text" id="tbPlatformEdition" value="*" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="Platform Language">Platform Language</label></td>
+				<td><input type="text" id="tbPlatformLanguage" value="*" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="Software Edition">Software Edition</label></td>
+				<td><input type="text" id="tbsoftwareEdition" value="*" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="Target Software">Target Software</label></td>
+				<td><input type="text" id="tbTargetSoftware" value="*" /></td>
+			</tr>
+
+			<tr>
+				<td><label for="Target Hardware">Target Hardware</label></td>
+				<td><input type="text" id="tbTargetHardware" value="*" /></td>
+			</tr>
+			<tr>
+				<td><label for="Platform Other">Other</label></td>
+				<td><input type="text"  name="contents" id="taOther" value="*"/></td>
+			</tr>
+
+			
+
+		
+		
+
+		
+
+		<tr></tr>
+		<tr></tr>
+		
+		<tr>
+		
+		<td><input style="width:100%" type="button" value="Submit"
+			onclick="submitPlatformInfo()" /></td>
+		<td><input style="width:100%" type="button" value="Back To Home"
+			onclick="backToHome()" /></td>
+		</tr>
+		
+		</table>
+		
+	</div>
+
+
 </body>
 </html>
