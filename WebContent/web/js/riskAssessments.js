@@ -252,30 +252,30 @@ function calculatingCM(){
 function calculatingRiskFactor(sGoal, mIndex, pIndex, rIndex){
 	if (sGoal == "C"){
 		if (mIndex == "" || pIndex == "" || rIndex == "") return "V";
-		else return false;
+		else return "clear";
 	}else if (sGoal == "RMRP"){
 		if (mIndex == "" || pIndex == "" ) return "V";
-		else return false;
+		else return "clear";
 	}else if (sGoal == "RPRR"){
 		if (pIndex == "" || rIndex == "" ) return "V";
-		else return false;
+		else return "clear";
 	}else if (sGoal == "RMRR"){
-		if (MIndex == "" || rIndex == "" ) return "V";
-		else return false;
+		if (mIndex == "" || rIndex == "" ) return "V";
+		else return "clear";
 	}else if (sGoal == "RM"){
 		if (mIndex == "" ) return "V";
-		else return false;
+		else return "clear";
 	}else if (sGoal == "RP"){
 		if (pIndex == "" ) return "V";
-		else return false;
+		else return "clear";
 	}else if (sGoal == "RR"){
 		if (rIndex == "" ) return "V";
-		else return false;
+		else return "clear";
 	}else if (sGoal == "R"){
 		if (mIndex == "" && pIndex == "" && rIndex == "") return "V";
-		else if(mIndex != "" || pIndex != "" || rIndex != "") return false;
+		else if(mIndex != "" || pIndex != "" || rIndex != "") return "clear";
 	}else {
-		return false;
+		return "clear";
 	}
 }
 

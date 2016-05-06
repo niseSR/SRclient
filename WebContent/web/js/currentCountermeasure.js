@@ -50,7 +50,7 @@ function findCountermeasureType()
 	}
 	
 	var resultAssetValue = $("#AssetType2 option:selected").val().replace("AS_", "");
-	var param = "cmType=C_" + resultAssetValue + "_" + $("#CountermeasureType1 option:selected").val() + "_";
+	var param = "cmType=CM_" + resultAssetValue + "_" + $("#CountermeasureType1 option:selected").val() + "_";
 
 	$.ajax({
         type: "POST",
