@@ -19,7 +19,7 @@ function loadAssetInfoPage(){
             	if(k=="success"){
             		var html = '';
 					$.each(v, function(l,m){
-                  		html += '<input type="checkbox" name="chkSHList" id="chk_info" value="'+m["relatedshID"]+'">' + m["relatedshName"] + '</input></br>';
+                  		html += '<input type="checkbox" name="chkSHList" id="chk_info" value=" '+m["relatedshID"]+'">' + m["relatedshName"] + '</input></br>';
                 	});
             		$("#RelatedSTakeholdersInfo").html(html);
             		alert("Success to get the data. \n 성공적으로 가져왔습니다. ");
