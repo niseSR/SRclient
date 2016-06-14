@@ -56,7 +56,7 @@ window.onload = function(){
 	    type: "POST",
 	    url: "http://" + domainText + "/SRserver/arcinfo/CompanyAsset.do",
 	    callback:"callbak",
-		dataType: "jsonp",
+		dataType: "jsonp",		
 		data:param,	
 		success:
 			function(data){
@@ -64,16 +64,21 @@ window.onload = function(){
 				if(k=="success"){
 					var html = '';
 					$.each(v, function(l,m){
+						
 						var mIntentIndex;
-						var domainasTypeArray = m["domainasID"].split('_');
+						var domainasTypeArray = m["companyAssetType"].split('_');
 						var domainasType = domainasTypeArray[0] + '_' + domainasTypeArray[1] + '_' + domainasTypeArray[2];
+
+						
 						html += '<tr>';
-						html += '<td>' + m["domainasName"] + '</td>';
+						html += '<td>' + m["companyAssetName"] + '</td>';
 						html += '<td>' + domainasType + '</td>';
-						html += '<td>' + m["domainasCriticality"] + '</td>';
-						html += '<td>' + m["domainasSGoalC"] + '</td>';
-						html += '<td>' + m["domainasSGoalI"] + '</td>';
-						html += '<td>' + m["domainasSGoalA"] + '</td>';
+						html += '<td>' + m["companyAssetCriticality"] + '</td>';
+						html += '<td>' + m["companyAssetSGOALC"] + '</td>';
+						html += '<td>' + m["companyAssetSGOALI"] + '</td>';
+						html += '<td>' + m["companyAssetSGOALA"] + '</td>';
+						html += '<td>' + m["companyAssetPlatform"] + '</td>';
+						html += '<td>' + m["companyAssetRelatedStakeholder"] + '</td>';
 						html += '</tr>';
 					
 				});
