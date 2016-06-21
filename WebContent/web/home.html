@@ -21,6 +21,9 @@
 <link rel="stylesheet" href="../css/style-fraction.css" />
 <link rel="stylesheet" href="../css/animate.css" />
 
+<link rel="StyleSheet" href="../css/dtree.css" type="text/css" />
+	<script type="text/javascript" src="../js/dtree.js"></script>
+
 <link rel="stylesheet" type="text/css" href="../css/style.css"
 	media="screen" data-name="skins">
 <link rel="stylesheet" href="../css/layout/wide.css" data-name="layout">
@@ -150,9 +153,104 @@
 		<!--/#logo-bar -->
 	</header>
 	<!--End Header-->
+	
+	<div
+		style="float: left; width: 13%; height: 100%; background-Color: #fff" >
+		
+		<div class="dtree">
+	<script type="text/javascript">
+		<!--
+
+		//id, pid, name, url, title, target, icon, iconOPne, open,
+
+		d = new dTree('d');
+		d.config.target="right";		
+		d.config.folderLinks = false;
+		
+// ----------------- MAIN ------------------//
+		d.add(0,-1,'<B>NISE</B>','','');
+		
+		
+// ----------------- HOME ------------------//
+		d.add(1,0,'HOME');
+		d.add(101,1,'HOME', '../web/home.html');
+
+		
+// ----------------- ARCHITECTURE INFO ------------------//
+		d.add(2,0,'ARCHITECTIRE INFO');
+		d.add(201,2,'ARCHITECTURE INFO','../web/architectureInfo.html');
+		d.add(202,2,'STAKEHOLDERS INFO','../web/stakeholdersInfo.html');
+		d.add(203,2,'PLATFORM INFO','../web/platformInfo.html');
+		d.add(204,2,'ASSET INFO','../web/assetInfo.html');
+		d.add(205,2,'CURRENT COUNTERMEASURE','../web/currentCountermeasure.html');
+	
+
+// ---------------- RISK ASSESSMENT -------------------- //
+		d.add(3,0,'RISK ASSESSMENT','');
+		d.add(301,3,'THREAT ANALYSIS','../web/threatAnalysis.html');
+		d.add(302,3,'RISK ASSESSMENTS','../web/riskAssessments.html');				
 
 
-	<h1 style="text-align:center">메뉴얼 중비중!!!</h1>
+// ----------------- CONFIGURATION -------------//
+		d.add(4,0,'CONFIGURATION');
+		d.add(401,4, 'CONFIGURATION');
+		
+		
+			
+		
+		document.write(d);
+
+		//-->
+	</script>
+	<p><a href="javascript: d.openAll();">Expand all</a> | <a href="javascript: d.closeAll();">Collapse all</a></p>
+</div>
+		
+	</div>
+
+	<div style="clear:right;float:right;width:87%;height:100%;background-Color:#fff">
+	<section class="info_service">
+		<div class="container">
+			<div class="row sub_content">
+				<div class="col-lg-12 col-md-12 col-sm-12 wow fadeInDown animated"
+					style="visibility: visible; animation-name: fadeInDown;">
+					<div align="center">
+						<img src="../images/logo2.png">
+					</div>
+					
+				</div>
+				
+				<h1>&nbsp;1. Usecase 모델 / 제공 서비스</h1>
+				</br>
+				<div align="center">
+					<img src="../images/a1.png">
+				</div>
+				
+					
+
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="serviceBox_3" style="text-align:left">
+						<h3>
+							&middot;  Purpose : This Web Application is for understanding and
+							recommending the security requirements and related concepts using
+							Problem Domain Ontology.
+						</h3>
+						<h3>
+							&middot;  목적 : 이 홈페이지는 온톨로지를 활용하여 보안 요구사항과 관련되는 개념들을 이해하고, 추천하기 위한
+								Web Application 입니다.
+						</h3>
+						<h3>&middot;  Published by : Bong-Jae Kim, Seok-Won Lee, and Sung-Shin
+							Choi</h3>
+					</div>
+				</div>
+
+
+
+
+				
+			</div>
+		</div>
+	</section>
+	</div>
 
 </body>
 </html>
