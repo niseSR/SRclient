@@ -1,5 +1,8 @@
 var domainText = getDomain();
 
+var platformID, threatName, assetName, cmType, attackVectorID, VulnerabilityID, cmName;
+var stakeholderName ="";
+
 function Request(valuename)    //javascript로 구현한 Request
 {
     var rtnval = "";
@@ -19,6 +22,9 @@ function Request(valuename)    //javascript로 구현한 Request
 
 function onLoadSRSpecification(){
     
+	if (check_session()=="RL") 	location.href="../main.html";
+	member_load();
+	
 	var recommendationParam = Request("recommendations").split(",");
 	var recomresult = "";
 	for (i=0; i<recommendationParam.length ; i++){
@@ -70,8 +76,7 @@ function recommendSecurityRequirements(){
 		+ "&CVEID=" + Request("CVEID")
 		+ "&CWEID=" + Request("CWEID")
 		+ "&CMID=" + $("#selectCM option:selected").val();
-	alert (param);
-
+	
 	$.ajax({
 	    type: "POST",
 	    url: "http://" + domainText + "/SRserver/risk/select_RecommendingSR.do",
@@ -151,9 +156,11 @@ function recommendSecurityRequirements(){
 						if (i==0){
 							html += '<td>'+v["rsrtASRelatedSHID" +i] + '</td>';
 							html += '<td>'+v["rsrtASRelatedSHName" +i] + '</td></tr>';
+							stakeholderName += v["rsrtASRelatedSHName" +i] + ",";
 						}else{
 							html += '<tr><td>'+v["rsrtASRelatedSHID" +i] + '</td>';
 							html += '<td>'+v["rsrtASRelatedSHName" +i] + '</td></tr>';
+							stakeholderName += v["rsrtASRelatedSHName" +i] + ",";
 						}
 					}
 					
@@ -219,7 +226,7 @@ function recommendSecurityRequirements(){
 					}
 					
 					
-					
+					/*
 					html += '<tr><td rowspan="' + v["rsrtRBRowCount"] + '">Recommendations for Business Pespective</td>';
 					html += '<td rowspan="' + v["rsrtRBOrganizationRowCount"] + '"> Organization </td>';
 					for (var i=0; i<v["rsrtRBOrganizationRowCount"]; i++){
@@ -334,8 +341,26 @@ function recommendSecurityRequirements(){
 							html += '<td>'+v["rsrtRTTrendContent" +i] + '</td></tr>';
 						}
 					}
+					*/
 					
 					
+					platformID = Request("PlatformID");
+					threatName = v["rsrtRFThreatContent"];
+					assetName = v["rsrtASProtectDomainasContent"];
+					cmType = $("#selectCM option:selected").val().split("_")[3];
+					cmName = v["rsrtCMNameContent"];
+					attackVectorID = v["rsrtRFAttackVectorID"]
+					
+					if (Request("CVEID") != "") {
+						if (Request("CWEID") != ""){
+							VulnerabilityID = Request("CWEID") + Request("CVEID");  		
+						} else {
+							VulnerabilityID = Request("CVEID");
+						}
+					} else {
+						VulnerabilityID = Request("CWEID");
+					}
+						
 					
 					
 					
@@ -343,6 +368,7 @@ function recommendSecurityRequirements(){
 					
 	              	
 	        		$("#SRTemplate").html(html);
+	        		setcanvas();
 	        		alert("Success to get the data. \n 성공적으로 가져왔습니다. ");
 	        	}
 	        	if(k=="fail"){
@@ -355,7 +381,168 @@ function recommendSecurityRequirements(){
 	    	return false;
 	    }
 	});
+	
 	return true;
 	
 
 }
+
+function setcanvas()
+{
+   var canvas = document.getElementById("canvasarea");
+   if (canvas.getContext)
+   {
+      var ctx = canvas.getContext("2d");
+      drawcanvas(ctx);
+   }
+   else
+   {
+      alert("Canvas NOT supported");
+   }
+}
+
+function drawcanvas(context)
+{
+	//Environment
+	context.strokeRect(80,82,810,360);
+	context.font = "20px san-serif";
+	context.textAlign = "center";
+	context.fillText("Environment", (680+290)/2, 82+20);
+	
+	context.font = "15px Times New Roman";
+	context.textAlign = "center";
+	context.fillText(platformID , (680+290)/2, 82+40);
+	
+	
+	//Asset	
+	context.strokeRect(680,142,860-680,322-142);
+	context.font = "20px san-serif";
+	context.textAlign = "center";
+	context.fillText("Asset", (860+680)/2, 142+20);
+	
+	context.font = "15px Times New Roman";
+	context.textAlign = "center";
+	context.fillText(assetName, (860+680)/2, 142+50, 180);
+	
+	//Threat
+	context.beginPath(); //패스 그리기 시작    
+	context.arc(200,142+90,90,0, 2*Math.PI, true); //원그리기  
+	context.stroke();    //윤관선 그리기
+	context.font = "20px san-serif";
+	context.textAlign = "center";
+	context.fillText("Threat", 200,142+20);
+	
+	context.font = "15px Times New Roman";
+	context.textAlign = "center";
+	context.fillText(threatName, 200, 142+50, 180);
+	
+	//Stakeholders	
+	context.strokeRect(80,382,810,60);
+	context.font = "20px san-serif";
+	context.textAlign = "center";
+	context.fillText("Stakeholder", (680+290)/2,382+20);
+	
+	context.font = "15px Times New Roman";
+	context.textAlign = "center";
+	context.fillText(stakeholderName, (680+290)/2, 382+50);
+		
+	//Security Goal
+	context.strokeRect(290,202,680-290,262-202);
+	context.font = "20px san-serif";
+	context.textAlign = "center";
+	if (cmType == "MC" || cmType == "PC" || cmType == "RC") context.fillText("Security Goal : Confidentiality", (680+290)/2, 202-10);
+	if (cmType == "MI" || cmType == "PI" || cmType == "RI") context.fillText("Security Goal : Integrity", (680+290)/2, 202-10);
+	if (cmType == "MA" || cmType == "PA" || cmType == "RA") context.fillText("Security Goal : Availability", (680+290)/2, 202-10);
+	
+	//Attack Vector
+	context.beginPath();     
+	context.arc(290,142+90,30,0, 2*Math.PI, true);   
+	context.fillStyle = "black";
+	context.fill();    
+	
+	context.beginPath();   
+	context.moveTo(290,142+90);   
+	context.lineTo(290+20 ,330);
+	context.stroke();  
+	
+	context.font = "15px san-serif";
+	context.textAlign = "center";
+	context.fillText("Attack-Vector:", 290+35,350);
+	
+	context.font = "15px Times New Roman";
+	context.textAlign = "center";
+	context.fillText(attackVectorID, 290+30, 365);
+	
+	//Vulnerability
+	context.beginPath();
+	context.moveTo(740,232);
+	context.lineTo(680,262);
+	context.lineTo(680,202);
+	context.lineTo(740,232);
+	context.closePath();
+	context.fillStyle = "black";
+	context.fill();
+	
+	context.beginPath(); //패스 그리기 시작  
+	context.moveTo((740+680)/2-30, 492/2); //패스 시작점 지정  
+	context.lineTo((740+680)/2-50 ,330);
+	context.stroke();  	
+	
+	context.font = "15px san-serif";
+	context.textAlign = "center";
+	context.fillText("Vulnerability: ", 680-40,350);
+	
+	context.font = "15px Times New Roman";
+	context.textAlign = "center";
+	context.fillText(VulnerabilityID, 680-40, 365);
+	
+	
+	
+	//Countermeasure
+		
+	if (cmType == "MC" || cmType == "MI" || cmType == "MA"){
+		context.strokeRect(470,202,60,60);
+		context.strokeRect(590,202,60,60);
+		context.strokeStyle = "red";
+		context.lineWidth=3;
+		context.strokeRect(350,202,60,60);
+	}
+	if (cmType == "PC" || cmType == "PI" || cmType == "PA"){
+		context.strokeRect(350,202,60,60);
+		context.strokeRect(590,202,60,60);
+		context.strokeStyle = "red";
+		context.lineWidth=3;
+		context.strokeRect(470,202,60,60);
+	}
+	if (cmType == "RC" || cmType == "RI" || cmType == "RA"){
+		context.strokeRect(350,202,60,60);
+		context.strokeRect(470,202,60,60);
+		context.strokeStyle = "red";
+		context.lineWidth=3;
+		context.strokeRect(590,202,60,60);
+	}
+	
+	
+	// context.strokeRect(350,202,60,60);
+	context.font = "15px san-serif";
+	context.textAlign = "center";
+	context.fillText("Monitor", 380, 202+15);
+	
+	// context.strokeRect(470,202,60,60);
+	context.font = "15px san-serif";
+	context.textAlign = "center";
+	context.fillText("Prevent", 500, 202+15);
+	
+	//context.strokeRect(590,202,60,60);
+	context.font = "15px san-serif";
+	context.textAlign = "center";
+	context.fillText("Recovery", 620, 202+15);
+	
+	
+	context.font = "20px san-serif";
+	context.textAlign = "center";
+	context.fillText("CM : " + cmName, (680+290)/2, 262+20);
+	
+	
+}
+

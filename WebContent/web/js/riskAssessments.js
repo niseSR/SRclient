@@ -2,6 +2,8 @@ var domainText = getDomain();
 
 var rowCount = 1;
 
+var platformID = "";
+
 function goForRecommendingCM(){
 	location.href="./srSpecification.html"
 }
@@ -84,7 +86,10 @@ function findThreatByName(){
 		return false;
 	}
 	
-	var param = "threatName=" + $("#tbThreatName").val();
+	var param = "threatName=" + $("#tbThreatName").val() 
+			+ "&threatID=TH_" + sessionStorage.getItem("SRClient.company");
+	
+	
 	$.ajax({
 	    type: "POST",
 	    url: "http://" + domainText + "/SRserver/risk/select_ThreatID.do",
@@ -123,6 +128,50 @@ function calculatingCM(){
 		return false;
 	}
 	
+	var paramForRiskCheck = "domainasID=" + $("#AssetType3 option:selected").val()
+							+ "&threatID=" + $("#sbThreatID option:selected").val();
+
+	$.ajax({
+	    type: "POST",
+	    url: "http://" + domainText + "/SRserver/risk/check_RiskExists.do",
+	    callback:"callbak",
+		dataType: "jsonp",
+		data:paramForRiskCheck,	
+		success:
+			function(data){
+			var html = '<table class="table table-striped table-bordered table-hover" style="margin-left:0" >';
+			html +='<caption>Check Risk Existence</caption>';
+			html +='<thead><thead><tr>';
+			html +='<th rowspan="2">Result</th>';
+			html +='<th> Asset Platform</th>';
+			html +='<th> Threat Platform</th></tr>';
+			html +='<tr><th id="assetName">'+$("#AssetType3 option:selected").text()+'</th>';
+			html +='<th id="threatName">'+$("#sbThreatID option:selected").text()+'</th></tr></thead>';
+			html +='<tbody>';
+	    	$.each(data, function(k,v){
+	        	if(k=="success"){
+	        		var t=0;
+	        		$.each(v, function(l,m){
+	        			html += '<tr class="danger"><td> Risk Exist </td>';
+	        			html += '<td colspan ="2">'+ v["platformID"+t] + '</td></tr>';
+	        			platformID += v["platformID"+t] +",";
+	        			t++;
+	        		});
+	        	}
+	        	if(k=="fail"){
+	        		html += '<tr class="success"><td colspan="3" align="center"> No Risk Exist</td></tr>';
+	        		return false;
+	        	}
+	    	});
+			html +='</tbody></table>';
+	    	$("#checkRiskbyPlatform").html(html);
+	    },
+	    error: function(){
+	    	alert("Fail to access the server \n 서버 연결 실패");
+	    	return false;
+	    }
+	});
+
 	var param = "domainasID=" + $("#AssetType3 option:selected").val() 
 		+ "&asID=" + $("#AssetType2 option:selected").val()
 		+ "&threatactThreatID=" + $("#sbThreatID option:selected").val()
@@ -377,6 +426,7 @@ function moveToNextStage(rowNum){
 		+ "&CAPECID=" + $("#tdCAPEC"+ rowNum).text() 
 		+ "&CVEID=" + $("#tdCVE"+ rowNum).text() 
 		+ "&CWEID=" + $("#tdCWE"+ rowNum).text() 
+		+ "&PlatformID=" + platformID
 		+ "&recommendations=" + $("#tdRecommendation"+ rowNum).text();     
 	alert(param);
 	location.href= "./srSpecification.html?" + param;
