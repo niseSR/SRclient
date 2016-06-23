@@ -50,7 +50,7 @@ window.onload = function(){
 	
 	// Company Asset
 	
-	param = "domainasUserID=" +  implement_pbkdf2(sessionStorage.getItem("SRClient.id"));
+	param = "domainasUserID="+implement_pbkdf2(sessionStorage.getItem("SRClient.id"));
 	
 	$.ajax({
 	    type: "POST",
@@ -103,7 +103,7 @@ window.onload = function(){
 	});
 	
 	
-	param = "currentcmUserID=" +  implement_pbkdf2(sessionStorage.getItem("SRClient.id"));
+	param = "currentcmUserID=" +implement_pbkdf2(sessionStorage.getItem("SRClient.id"));
 	
 	$.ajax({
 	    type: "POST",

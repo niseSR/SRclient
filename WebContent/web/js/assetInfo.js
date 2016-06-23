@@ -19,7 +19,8 @@ function loadAssetInfoPage(){
             	if(k=="success"){
             		var html = '';
 					$.each(v, function(l,m){
-                  		html += '<input type="checkbox" name="chkSHList" id="chk_info" value=" '+m["relatedshID"]+'">' + m["relatedshName"] + '</input></br>';
+                  		html += '<input type="checkbox" name="chkSHList" id="chk_info" value="';
+                  		html += m["relatedshID"]+'">' + m["relatedshName"] + '</input></br>';
                 	});
             		$("#RelatedSTakeholdersInfo").html(html);
             		alert("Success to get the data. \n 성공적으로 가져왔습니다. ");
@@ -224,7 +225,7 @@ function submitAssetInfo(){
             			alert(domainAssetPlatformID);
             		}
             		param1 += domainAssetPlatformID;
-            		param1 += "&domainasrelatedshDomainasID="+domainAssetID + "&domainasrelatedshRelatedshID="+checkboxValue;
+            		param1 += "&domainasrelatedshDomainasID="+domainAssetID+"&domainasrelatedshRelatedshID="+checkboxValue;
             		$.ajax({
             	        type: "POST",
             	        url: "http://" + domainText + "/SRserver/arcinfo/submit_DomainAssetPLSHInfo.do",
